@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import './styles.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Login } from './pages/Login';
 import { Profile } from './pages/Profile';
