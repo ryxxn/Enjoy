@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Content } from '../components/Container'
-import { MenuBar } from '../components/MenuBar'
+import { Container, Content } from '../../components/Container'
+import { MenuBar } from '../../components/MenuBar'
 import { styled } from 'styled-components'
-import { Heading } from '../components/Heading'
-import { AddButton, PlusIcon } from '../components/AddButton'
-import { auth } from '../firebase'
-import { QrGenerater } from '../components/QRGenerater'
-import { addStamp } from '../services/stamps.services'
-import { getLocalData, timestampToDate } from '../utils/functions'
-import { addProfileImageToUser } from '../services/user.services'
-import { useUserStore } from '../store/userStore'
+import { Heading } from '../../components/Heading'
+import { AddButton, PlusIcon } from '../../components/AddButton'
+import { auth } from '../../firebase'
+import { QrGenerater } from '../../components/QRGenerater'
+import { addStamp } from '../../services/stamps.services'
+import { getLocalData, timestampToDate } from '../../utils/functions'
+import { addProfileImageToUser } from '../../services/user.services'
+import { useUserStore } from '../../store/userStore'
 
 const InfoBox = styled.div`
     width: 100%;
@@ -122,7 +122,7 @@ export const Profile = () => {
                     {
                         imageUrl || userData?.profileImage ?
                             <label htmlFor='addBtn'>
-                                <ProfileImage src={imageUrl || userData?.profileImage} onLoad={() => { setLoading(false) }}/>
+                                <ProfileImage src={imageUrl || userData?.profileImage} onLoad={() => { setLoading(false) }} />
                             </label>
                             :
                             <label htmlFor='addBtn'>

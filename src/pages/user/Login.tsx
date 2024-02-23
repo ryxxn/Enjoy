@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
-import { Container } from '../components/Container'
+import { Container } from '../../components/Container'
 import { useNavigate } from 'react-router-dom'
-import { googleSignUpWithPopup, googleSignUpWithRedirect, handleGoogleRedirectResult } from '../services/login.services'
+import { googleSignUpWithPopup, googleSignUpWithRedirect, handleGoogleRedirectResult } from '../../services/login.services'
 import { isIOS, isMobile } from 'react-device-detect'
 
 const LoginButton = styled.button`
@@ -66,10 +66,10 @@ export const Login = () => {
             navigate('/profile');
         } catch (err: any) {
             setLoading(false);
-            if (err === '경희대학교 이메일이 아닙니다.'){
+            if (err === '경희대학교 이메일이 아닙니다.') {
                 alert("경희대학교 이메일이 아닙니다.");
             }
-            else{
+            else {
                 alert('회원가입 실패\n err :' + err)
             }
         }

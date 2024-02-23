@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Content } from '../components/Container'
-import { Heading } from '../components/Heading'
-import { MenuBar } from '../components/MenuBar'
+import { Container, Content } from '../../components/Container'
+import { Heading } from '../../components/Heading'
+import { MenuBar } from '../../components/MenuBar'
 import { styled } from 'styled-components'
-import { AddButton } from '../components/AddButton'
-import { QrGenerater } from '../components/QRGenerater'
-import { EQrReader } from '../components/QRReader'
-import { addStampIdToUser, getStamps } from '../services/stamps.services'
-import { auth } from '../firebase'
-import { isUuidPattern } from '../utils/functions'
+import { AddButton } from '../../components/AddButton'
+import { QrGenerater } from '../../components/QRGenerater'
+import { EQrReader } from '../../components/QRReader'
+import { addStampIdToUser, getStamps } from '../../services/stamps.services'
+import { auth } from '../../firebase'
+import { isUuidPattern } from '../../utils/functions'
 
 const StampsBox = styled.div`
     position: relative;

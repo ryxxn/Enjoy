@@ -1,8 +1,8 @@
 import React from 'react'
-import { Container, Content } from '../components/Container'
-import { Heading } from '../components/Heading'
-import { MenuBar } from '../components/MenuBar'
-import { SearchBar } from '../components/SearchBar'
+import { Container, Content } from '../../components/Container'
+import { Heading } from '../../components/Heading'
+import { MenuBar } from '../../components/MenuBar'
+import { SearchBar } from '../../components/SearchBar'
 import styled from 'styled-components'
 
 const NoticeContainer = styled.ul`
@@ -61,7 +61,7 @@ export const Notice = () => {
                 />
                 <SearchBar></SearchBar>
                 <NoticeContainer>
-                    {noticeData.map((item: NoticeDataType, index:number) => (
+                    {noticeData.map((item: NoticeDataType, index: number) => (
                         <NoticeCell key={index}>
                             <p className="kind">{item.kind}</p>
                             <p className="title">{item.title}</p>

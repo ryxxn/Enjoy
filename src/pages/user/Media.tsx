@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { Container, Content } from '../components/Container'
-import { Heading } from '../components/Heading'
-import { MenuBar } from '../components/MenuBar'
+import { Container, Content } from '../../components/Container'
+import { Heading } from '../../components/Heading'
+import { MenuBar } from '../../components/MenuBar'
 import styled from 'styled-components'
-import { getNews } from '../services/news.service'
+import { getNews } from '../../services/news.service'
 import { useNavigate } from 'react-router-dom'
 
 const YoutubeContainer = styled.div`
@@ -40,12 +40,12 @@ interface VideosDataType {
 export const Media = () => {
 
     const videosData: VideosDataType[] = [
-        {title: "YouTube video player", src:"https://www.youtube.com/embed/q8pnmDxjsGg?si=5wafV-DJJON176Sc"}
+        { title: "YouTube video player", src: "https://www.youtube.com/embed/q8pnmDxjsGg?si=5wafV-DJJON176Sc" }
     ]
 
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         // getNews();
         window.alert("준비 중인 기능입니다.");
         navigate(-1);
@@ -60,7 +60,7 @@ export const Media = () => {
                 />
                 <YoutubeContainer>
                     <p>youtube</p>
-                    {videosData.map((item: VideosDataType, index:number) => (
+                    {videosData.map((item: VideosDataType, index: number) => (
                         <Card key={index}>
                             <iframe
                                 src={item.src}
