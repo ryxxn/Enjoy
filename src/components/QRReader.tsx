@@ -4,7 +4,7 @@ import Webcam from 'react-webcam';
 import { QrReader } from 'react-qr-reader';
 
 const QrContainer = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 99;
   left: 0;
   top: 0;
@@ -53,37 +53,37 @@ const QrContainer = styled.div`
 `
 
 interface QrReaderPropsType {
-    setIsActiveQr: Function
-    setStampId: Function
+  setIsActiveQr: Function
+  setStampId: Function
 }
 export const EQrReader: React.FC<QrReaderPropsType> = ({ setIsActiveQr, setStampId }) => {
 
-    const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<any>(null);
 
 
 
-    return (
-        <QrContainer>
-            <QrReader
-                onResult={(result: any, error) => {
-                    if (!!result) {
-                        setData(result?.text);
-                        setStampId(result?.text)
-                        setIsActiveQr();
-                        // console.log(result?.text)
-                    }
+  return (
+    <QrContainer>
+      <QrReader
+        onResult={(result: any, error) => {
+          if (!!result) {
+            setData(result?.text);
+            setStampId(result?.text)
+            setIsActiveQr();
+            // console.log(result?.text)
+          }
 
-                    if (!!error) {
-                        // console.info(error);
-                    }
-                }}
-                containerStyle={{ width: '100%', height: "100%" }}
-                constraints={{ facingMode: 'environment' }}
-                className='qrReader'
-            />
-            <button className="closeButton" onClick={() => setIsActiveQr()}>닫기</button>
-        </QrContainer>
-    );
+          if (!!error) {
+            // console.info(error);
+          }
+        }}
+        containerStyle={{ width: '100%', height: "100%" }}
+        constraints={{ facingMode: 'environment' }}
+        className='qrReader'
+      />
+      <button className="closeButton" onClick={() => setIsActiveQr()}>닫기</button>
+    </QrContainer>
+  );
 }
 
 
