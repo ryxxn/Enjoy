@@ -13,6 +13,8 @@
 firebase.ts
 services
 
+/.firebase
+
 # misc
 .DS_Store
 .env.local
