@@ -29,6 +29,7 @@ const StampsBox = styled.div`
 const Stamp = styled.img`
     position: absolute;
     animation: rotate .3s linear;
+    max-width: 120px;
     &:first-child{
         left: 40px;
         top: 40px;
@@ -36,6 +37,10 @@ const Stamp = styled.img`
     &:nth-child(2){
         left: 180px;
         top: 90px;
+    }
+    &:nth-child(3){
+        left: 30px;
+        top: 180px;
     }
     @keyframes rotate{
         to{
@@ -55,6 +60,9 @@ export interface stampDataType {
 export const Stamps = () => {
 
     const [isActiveQr, setIsActiveQr] = useState<boolean>(false);
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
     // QR을 찍으면 스탬프 id가 들어온다.
     const [stampId, setStampId] = useState(null);
 
@@ -64,26 +72,29 @@ export const Stamps = () => {
         if (!stampId) return;
         if (!auth.currentUser?.uid) return;
 
-        if(!isUuidPattern(stampId)){
+        if (!isUuidPattern(stampId)) {
             alert("유효한 QR코드가 아닙니다.");
             setStampId(null);
             return;
         }
-        
+
         // 데이터가 들어오면 
         addStampIdToUser(auth.currentUser?.uid, stampId);
         setStampId(null);
     }, [stampId])
 
     const fetchStamps = async () => {
+        setIsLoading(true);
         const response = await getStamps();
         setStamps(response);
+        setIsLoading(false);
     }
 
     useEffect(() => {
         if (!auth.currentUser?.uid) return;
         fetchStamps();
     }, [auth.currentUser])
+
 
     return (
         <Container>
@@ -93,7 +104,7 @@ export const Stamps = () => {
                     setStampId={(e: any) => setStampId(e)}
                 />
                 : null}
-            <Content style={{justifyContent: "flex-start"}}>
+            <Content style={{ justifyContent: "flex-start" }}>
                 <Heading
                     heading="my stamps"
                     subText="get your stamps"

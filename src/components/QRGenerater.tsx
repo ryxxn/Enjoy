@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import QRCode from 'qrcode.react';
 
 export const QrGenerater = () => {
-  const [stampInfo, setStampInfo] = useState("118b287f-36e6-4227-be4d-f064e82b0680");
+  const [stampInfo, setStampInfo] = useState("521fbb1f-a4c1-45fa-a2ef-742ac4decfee");
 
   // 스탬프 정보를 JSON 형식의 문자열로 변환
   // const stampInfoJSON = JSON.stringify(stampInfo);

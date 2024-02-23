@@ -5,6 +5,7 @@ import { EnMedia, EnNotice, EnProfile, EnStamps } from './Icons/En';
 
 const MenuBarContainer = styled.div`
     width: 100%;
+    max-width: 480px;
     height: 100px;
     position: fixed;
     bottom: 0;
@@ -18,7 +19,6 @@ const MenuBarContainer = styled.div`
     box-shadow: 0px 0px 4px 0px rgba(0,0,0,.25);
     
 `
-
 interface LinkPropsType {
     isActived: boolean,
     children: ReactNode,

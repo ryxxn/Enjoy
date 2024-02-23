@@ -70,14 +70,14 @@ export const Profile = () => {
 
     const [imageUrl, setImageUrl] = useState<string | undefined | null>(null);
 
-    const { userData, fetchUserData, loading } = useUserStore();
+    const { userData, fetchUserData, loading, setLoading } = useUserStore();
 
     // 이 양식으로 큐알 올리면 됨.
     // const handleUpload = () => {
     //     addStamp(
-    //         "2023문엔인의밤",
-    //         "2023문엔인의밤",
-    //         new Date(2023, 10, 27),
+    //         "2023 콘텐츠제 ENCORE",
+    //         "2023 콘텐츠제 ENCORE",
+    //         new Date(2023, 11, 10),
     //         imageFile
     //     )
     // }
@@ -120,9 +120,9 @@ export const Profile = () => {
                         onChange={(e: any) => setImageFile(e.target.files[0])}
                     />
                     {
-                        imageUrl || userData?.profileImage?
+                        imageUrl || userData?.profileImage ?
                             <label htmlFor='addBtn'>
-                                <ProfileImage src={imageUrl || userData?.profileImage} />
+                                <ProfileImage src={imageUrl || userData?.profileImage} onLoad={() => { setLoading(false) }}/>
                             </label>
                             :
                             <label htmlFor='addBtn'>
