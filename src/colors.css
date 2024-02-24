@@ -1,8 +1,0 @@
-:root{
-    --white: #fff;
-    --black: #000;
-    --main-color: #FE7B7B;
-    --main-disabled: #FFC6C6;
-    --border-color: #E4E4E4;
-    --border: 1px solid var(--border-color); 
-}

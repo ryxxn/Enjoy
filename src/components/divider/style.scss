@@ -1,0 +1,8 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.divider {
+  background-color: $borderColor;
+  height: px(1);
+  margin-block: px(4);
+}
