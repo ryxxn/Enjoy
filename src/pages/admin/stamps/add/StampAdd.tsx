@@ -1,51 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import './style.scss';
+import '../detail/style.scss';
 import { useForm } from 'react-hook-form';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FormProvider, RHFTextField } from 'src/components/RHFForms';
 import Card from 'src/components/card';
 import AdminLayout from 'src/layouts/admin/main/AdminLayout';
-import {
-  deleteStamp,
-  getStamp,
-  updateStamp,
-} from 'src/services/stamps.services';
+import { addStamp } from 'src/services/stamps.services';
 import { Stamp } from 'src/types/types';
 import Button from 'src/components/button';
 import Divider from 'src/components/divider';
 import RHFDateTimePicker from 'src/components/RHFForms/RHFDateTimePicker';
 import { ADMIN_PATH } from 'src/routes/path';
-import { useConfirmStore } from 'src/store/useConfirmStore';
 
-const AdminStampDetail = () => {
-  const { id: stampId } = useParams();
-
-  const [stamp, setStamp] = useState<Stamp>();
-
-  const [isEdit, setIsEdit] = useState<boolean>(false);
-
+const AdminStampAdd = () => {
   const [imageFile, setImageFile] = useState<File | Blob | any>();
   const [previewUrl, setPreviewUrl] = useState<any>(null);
 
   const navigate = useNavigate();
 
-  const methods = useForm<Stamp>({
-    defaultValues: stamp,
-  });
+  const methods = useForm<Stamp>({});
 
-  const { reset, handleSubmit } = methods;
+  const { handleSubmit } = methods;
 
   const onSubmit = async (data: Stamp) => {
+    console.log(data);
     const { kind, name, date } = data;
-    await updateStamp(stampId, kind, name, new Date(date), imageFile);
-    setIsEdit(false);
-    await fetchStamp();
-  };
-
-  const { handleConfirm, onClose } = useConfirmStore();
-
-  const handleDelete = async () => {
-    await deleteStamp(stampId);
+    await addStamp(kind, name, new Date(date), imageFile);
     navigate(ADMIN_PATH.STAMPS);
   };
 
@@ -67,23 +47,9 @@ const AdminStampDetail = () => {
     };
   }, [imageFile, previewUrl]);
 
-  const fetchStamp = async () => {
-    if (!stampId) return;
-    getStamp(stampId).then((res: any) => {
-      setStamp(res);
-      setPreviewUrl(res.imgSrc);
-      reset(res);
-    });
-  };
-
-  useEffect(() => {
-    fetchStamp();
-    // eslint-disable-next-line
-  }, [stampId]);
-
   return (
     <AdminLayout>
-      <Card>스탬프 정보</Card>
+      <Card>스탬프 추가</Card>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <div className='stampDetailContainer'>
           <Card>
@@ -108,7 +74,6 @@ const AdminStampDetail = () => {
                 <label>이름</label>
                 <RHFTextField
                   name={'name'}
-                  readonly={!isEdit}
                   placeholder='이름을 입력해주세요.'
                 />
               </div>
@@ -116,63 +81,27 @@ const AdminStampDetail = () => {
                 <label>종류</label>
                 <RHFTextField
                   name={'kind'}
-                  readonly={!isEdit}
                   placeholder='종류를 입력해주세요.'
                 />
               </div>
 
               <div className='line'>
                 <label>행사일</label>
-                <RHFDateTimePicker name={'date'} readonly={!isEdit} />
+                <RHFDateTimePicker name={'date'} />
               </div>
-              <div className='line'>
-                <label>생성일</label>
-                <p>{stamp?.createdAt?.toLocaleDateString()}</p>
-              </div>
+              <div className='line'></div>
             </div>
 
             <Divider />
 
             <div className='buttonsGroup'>
-              {isEdit ? (
-                <>
-                  <Button onClick={() => setIsEdit(false)}>취소</Button>
-                  <Button
-                    key='submitbutton'
-                    type='submit'
-                    style={{ background: '#000', color: '#fff' }}
-                  >
-                    저장
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Button onClick={() => navigate(ADMIN_PATH.STAMPS)}>
-                    닫기
-                  </Button>
-                  <Button
-                    onClick={() =>
-                      handleConfirm({
-                        text: '스탬프를 삭제하시겠습니까?',
-                        open: true,
-                        onAction: () => {
-                          handleDelete();
-                          onClose();
-                        },
-                      })
-                    }
-                    style={{ background: '#aaa', color: '#fff' }}
-                  >
-                    삭제
-                  </Button>
-                  <Button
-                    onClick={() => setIsEdit(true)}
-                    style={{ background: '#000', color: '#fff' }}
-                  >
-                    수정
-                  </Button>
-                </>
-              )}
+              <Button onClick={() => navigate(ADMIN_PATH.STAMPS)}>닫기</Button>
+              <Button
+                type='submit'
+                style={{ background: '#000', color: '#fff' }}
+              >
+                저장
+              </Button>
             </div>
           </Card>
         </div>
@@ -181,4 +110,4 @@ const AdminStampDetail = () => {
   );
 };
 
-export default AdminStampDetail;
+export default AdminStampAdd;

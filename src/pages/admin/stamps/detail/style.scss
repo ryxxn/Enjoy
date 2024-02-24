@@ -1,0 +1,56 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.stampDetailContainer {
+  .formContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: px(8);
+    padding: px(16) px(8);
+    box-sizing: border-box;
+
+    .line {
+      @include flexLayout(column, flex-start, flex-start, 8);
+      margin-inline: px(8);
+      box-sizing: border-box;
+      margin-block: px(8);
+
+      label {
+        font-size: px(13);
+      }
+
+      p {
+        padding-block: px(8);
+        font-size: px(14);
+      }
+
+      .stampImage {
+        width: 100%;
+        border: px(1) solid #eee;
+        border-radius: px(8);
+        padding: px(16);
+        box-sizing: border-box;
+        cursor: pointer;
+
+        .helpText {
+          height: px(100);
+          color: #757575;
+          @include flexLayout(row, center, center, 0);
+        }
+
+        @include flexLayout(column, center, center, 0);
+        input {
+          display: none;
+        }
+        img {
+          width: px(100);
+          aspect-ratio: 1/1;
+        }
+      }
+    }
+  }
+  .buttonsGroup {
+    @include flexLayout(row, flex-end, center, 8);
+    margin-top: px(16);
+  }
+}

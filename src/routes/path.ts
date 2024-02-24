@@ -13,6 +13,7 @@ export const ADMIN_PATH = {
   MAIN: '/admin/main',
   USERS: '/admin/users',
   STAMPS: '/admin/stamps',
+  STAMPS_ADD: '/admin/stamps/add',
   NOTICE: '/admin/notice',
   MEDIA: '/admin/media',
 };

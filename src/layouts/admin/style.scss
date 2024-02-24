@@ -72,6 +72,9 @@
 @media (width < 768px) {
   .adminMainLayout {
     grid-auto-columns: 0 auto 1fr;
+    .adminNavLayout {
+      display: none;
+    }
   }
 }
 @media (width > 768px) {

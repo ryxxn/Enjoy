@@ -17,6 +17,8 @@ import AdminStamps from './pages/admin/stamps/Stamps';
 import AdminNotice from './pages/admin/notice/Notice';
 import AdminMedia from './pages/admin/media/Media';
 import AdminStampDetail from './pages/admin/stamps/detail/StampDetail';
+import AdminStampAdd from './pages/admin/stamps/add/StampAdd';
+import ConfirmProvider from './provider/ConfirmProvider';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -41,32 +43,35 @@ function App() {
   const isAdmin = true;
 
   return (
-    <BrowserRouter>
-      <>
-        {isLoggedIn ? (
-          <Routes>
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/stamps' element={<Stamps />} />
-            <Route path='/notice' element={<Notice />} />
-            {/* <Route path='/notice/:id' element={<Notice />} /> */}
-            <Route path='/media' element={<Media />} />
-            <Route path='/admin/main' element={<AdminMain />} />
-            <Route path='/admin/users' element={<AdminUsers />} />
-            <Route path='/admin/stamps' element={<AdminStamps />} />
-            <Route path='/admin/stamps/:id' element={<AdminStampDetail />} />
-            <Route path='/admin/notice' element={<AdminNotice />} />
-            <Route path='/admin/media' element={<AdminMedia />} />
-            <Route path='/admin/' element={<Navigate to='/admin/main' />} />
-            <Route path='/*' element={<Navigate to='profile' />} />
-          </Routes>
-        ) : (
-          <Routes>
-            <Route path='/login' element={<Login />} />
-            <Route path='/*' element={<Navigate to='login' />} />
-          </Routes>
-        )}
-      </>
-    </BrowserRouter>
+    <ConfirmProvider>
+      <BrowserRouter>
+        <>
+          {isLoggedIn ? (
+            <Routes>
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/stamps' element={<Stamps />} />
+              <Route path='/notice' element={<Notice />} />
+              {/* <Route path='/notice/:id' element={<Notice />} /> */}
+              <Route path='/media' element={<Media />} />
+              <Route path='/admin/main' element={<AdminMain />} />
+              <Route path='/admin/users' element={<AdminUsers />} />
+              <Route path='/admin/stamps' element={<AdminStamps />} />
+              <Route path='/admin/stamps/:id' element={<AdminStampDetail />} />
+              <Route path='/admin/stamps/add' element={<AdminStampAdd />} />
+              <Route path='/admin/notice' element={<AdminNotice />} />
+              <Route path='/admin/media' element={<AdminMedia />} />
+              <Route path='/admin/' element={<Navigate to='/admin/main' />} />
+              <Route path='/*' element={<Navigate to='profile' />} />
+            </Routes>
+          ) : (
+            <Routes>
+              <Route path='/login' element={<Login />} />
+              <Route path='/*' element={<Navigate to='login' />} />
+            </Routes>
+          )}
+        </>
+      </BrowserRouter>
+    </ConfirmProvider>
   );
 }
 

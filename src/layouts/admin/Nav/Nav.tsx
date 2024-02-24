@@ -9,6 +9,7 @@ import { FaRegUser } from 'react-icons/fa';
 import { PiStamp } from 'react-icons/pi';
 import { MdNotificationsNone } from 'react-icons/md';
 import { TfiLayoutMediaCenterAlt } from 'react-icons/tfi';
+import { ADMIN_PATH } from 'src/routes/path';
 
 const Nav = () => {
   const { userData } = useUserStore();
@@ -19,6 +20,13 @@ const Nav = () => {
 
   const { pathname } = useLocation();
 
+  const isActived = (path: string) => {
+    const formattedPathname = pathname.replace(/\/$/, '');
+    const formattedPath = path.replace(/\/$/, '');
+
+    return formattedPathname.includes(formattedPath);
+  };
+
   return (
     <>
       <nav className='adminNavLayout'>
@@ -28,32 +36,32 @@ const Nav = () => {
         </Card>
         <Divider />
         <ul className='list'>
-          <li className={pathname === '/admin/main' ? 'actived' : ''}>
-            <Link to='/admin/main'>
+          <li className={isActived(ADMIN_PATH.MAIN) ? 'actived' : ''}>
+            <Link to={ADMIN_PATH.MAIN}>
               <MdOutlineDashboard size={18} />
               Dashboard
             </Link>
           </li>
-          <li className={pathname === '/admin/users' ? 'actived' : ''}>
-            <Link to='/admin/users'>
+          <li className={isActived(ADMIN_PATH.USERS) ? 'actived' : ''}>
+            <Link to={ADMIN_PATH.USERS}>
               <FaRegUser size={18} />
               사용자 관리
             </Link>
           </li>
-          <li className={pathname === '/admin/stamps' ? 'actived' : ''}>
-            <Link to='/admin/stamps'>
+          <li className={isActived(ADMIN_PATH.STAMPS) ? 'actived' : ''}>
+            <Link to={ADMIN_PATH.STAMPS}>
               <PiStamp size={18} />
               스탬프 관리
             </Link>
           </li>
-          <li className={pathname === '/admin/notice' ? 'actived' : ''}>
-            <Link to='/admin/notice'>
+          <li className={isActived(ADMIN_PATH.NOTICE) ? 'actived' : ''}>
+            <Link to={ADMIN_PATH.NOTICE}>
               <MdNotificationsNone size={18} />
               공지사항 관리
             </Link>
           </li>
-          <li className={pathname === '/admin/media' ? 'actived' : ''}>
-            <Link to='/admin/media'>
+          <li className={isActived(ADMIN_PATH.MEDIA) ? 'actived' : ''}>
+            <Link to={ADMIN_PATH.MEDIA}>
               <TfiLayoutMediaCenterAlt size={18} />
               미디어 관리
             </Link>

@@ -1,0 +1,8 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.buttonsGroup {
+  @include flexLayout(row, flex-end, center, 8);
+  width: 100%;
+  margin-top: px(16);
+}

@@ -1,8 +1,6 @@
-import { Timestamp } from 'firebase/firestore';
-
 export interface Stamp {
-  createdAt: Timestamp;
-  date: Timestamp;
+  createdAt: Date;
+  date: Date;
   id: string;
   imgSrc: string | null;
   kind: string;
