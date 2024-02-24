@@ -96,10 +96,7 @@ const AdminStampAdd = () => {
 
             <div className='buttonsGroup'>
               <Button onClick={() => navigate(ADMIN_PATH.STAMPS)}>닫기</Button>
-              <Button
-                type='submit'
-                style={{ background: '#000', color: '#fff' }}
-              >
+              <Button type='submit' fill>
                 저장
               </Button>
             </div>

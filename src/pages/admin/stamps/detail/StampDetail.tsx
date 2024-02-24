@@ -16,6 +16,9 @@ import Divider from 'src/components/divider';
 import RHFDateTimePicker from 'src/components/RHFForms/RHFDateTimePicker';
 import { ADMIN_PATH } from 'src/routes/path';
 import { useConfirmStore } from 'src/store/useConfirmStore';
+import ButtonsGroup from 'src/components/buttons-group';
+import { Modal } from 'src/components/modal';
+import { QrGenerater } from 'src/components/QRGenerater';
 
 const AdminStampDetail = () => {
   const { id: stampId } = useParams();
@@ -26,6 +29,8 @@ const AdminStampDetail = () => {
 
   const [imageFile, setImageFile] = useState<File | Blob | any>();
   const [previewUrl, setPreviewUrl] = useState<any>(null);
+
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -84,6 +89,11 @@ const AdminStampDetail = () => {
   return (
     <AdminLayout>
       <Card>스탬프 정보</Card>
+      <ButtonsGroup>
+        <Button onClick={() => setModalOpen(true)} fill>
+          QR코드 생성하기
+        </Button>
+      </ButtonsGroup>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <div className='stampDetailContainer'>
           <Card>
@@ -133,7 +143,7 @@ const AdminStampDetail = () => {
 
             <Divider />
 
-            <div className='buttonsGroup'>
+            <ButtonsGroup>
               {isEdit ? (
                 <>
                   <Button onClick={() => setIsEdit(false)}>취소</Button>
@@ -173,10 +183,13 @@ const AdminStampDetail = () => {
                   </Button>
                 </>
               )}
-            </div>
+            </ButtonsGroup>
           </Card>
         </div>
       </FormProvider>
+      <Modal open={modalOpen} setOpen={setModalOpen}>
+        <QrGenerater stampId={stampId} onClose={() => setModalOpen(false)} />
+      </Modal>
     </AdminLayout>
   );
 };

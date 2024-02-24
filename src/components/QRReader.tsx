@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { styled } from "styled-components";
-import Webcam from 'react-webcam';
+import { useState } from 'react';
+import { styled } from 'styled-components';
 import { QrReader } from 'react-qr-reader';
 
 const QrContainer = styled.div`
@@ -16,23 +15,23 @@ const QrContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(0, 0, 0, 0.8);
 
-  .qrReader{
+  .qrReader {
     position: relative;
     width: 340px !important;
     height: 340px !important;
     overflow: hidden;
-    
-    div{
+
+    div {
       border: 8px solid var(--white);
       box-sizing: border-box;
       padding: 0 !important;
       border-radius: 32px;
       width: 340px !important;
       height: 340px !important;
-      
-      video{
+
+      video {
         position: absolute;
         width: 100vh !important;
         height: 100vh !important;
@@ -41,7 +40,7 @@ const QrContainer = styled.div`
       }
     }
   }
-  .closeButton{
+  .closeButton {
     width: 140px;
     margin-top: 32px;
     line-height: 40px;
@@ -50,17 +49,17 @@ const QrContainer = styled.div`
     background-color: var(--white);
     font-size: 18px;
   }
-`
+`;
 
 interface QrReaderPropsType {
-  setIsActiveQr: Function
-  setStampId: Function
+  setIsActiveQr: Function;
+  setStampId: Function;
 }
-export const EQrReader: React.FC<QrReaderPropsType> = ({ setIsActiveQr, setStampId }) => {
-
+export const EQrReader: React.FC<QrReaderPropsType> = ({
+  setIsActiveQr,
+  setStampId,
+}) => {
   const [data, setData] = useState<any>(null);
-
-
 
   return (
     <QrContainer>
@@ -68,7 +67,7 @@ export const EQrReader: React.FC<QrReaderPropsType> = ({ setIsActiveQr, setStamp
         onResult={(result: any, error) => {
           if (!!result) {
             setData(result?.text);
-            setStampId(result?.text)
+            setStampId(result?.text);
             setIsActiveQr();
             // console.log(result?.text)
           }
@@ -77,23 +76,22 @@ export const EQrReader: React.FC<QrReaderPropsType> = ({ setIsActiveQr, setStamp
             // console.info(error);
           }
         }}
-        containerStyle={{ width: '100%', height: "100%" }}
+        containerStyle={{ width: '100%', height: '100%' }}
         constraints={{ facingMode: 'environment' }}
         className='qrReader'
       />
-      <button className="closeButton" onClick={() => setIsActiveQr()}>닫기</button>
+      <button className='closeButton' onClick={() => setIsActiveQr()}>
+        닫기
+      </button>
     </QrContainer>
   );
-}
-
+};
 
 /*
 위의 코드에서는 큐알 코드 생성 시 QRCode 컴포넌트를 사용하고, stampInfo 객체를 JSON 문자열로 변환하여 큐알 코드의 value 속성에 전달합니다. 사용자가 큐알 코드를 스캔하면 JSON 데이터를 추출하여 스탬프 정보를 화면에 표시할 수 있습니다.
 
 실제로 사용하려면 큐알 코드 스캔 라이브러리를 사용하여 큐알 코드를 스캔하고, 스캔된 데이터를 디코딩하여 스탬프 정보를 추출해야 합니다.
 */
-
-
 
 //================================================================================================================================================
 
@@ -115,4 +113,3 @@ export const EQrReader: React.FC<QrReaderPropsType> = ({ setIsActiveQr, setStamp
 
 아래는 간단한 예제 코드로, react-webcam 및 react-qr-reader를 사용하여 React 앱에서 카메라를 열고 큐알 코드를 스캔하고 정보를 저장하는 방법을 보여줍니다.
 */
-
