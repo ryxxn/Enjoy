@@ -1,0 +1,36 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.tableContainer {
+  @include flexLayout(column, center, center, 0);
+  width: 100%;
+
+  .tableHead {
+    width: 100%;
+    th {
+      @include flexLayout(row, space-between, center, 0);
+      padding: px(16);
+      box-sizing: border-box;
+      border-bottom: px(1) solid $borderColor;
+      tr {
+        font-size: px(13);
+        color: #aaa;
+      }
+    }
+  }
+  .tableRow {
+    @include flexLayout(row, space-between, center, 0);
+    width: 100%;
+    padding: px(16);
+    box-sizing: border-box;
+    border-bottom: px(1) solid $borderColor;
+    transition: 0.2s;
+    .tableCol {
+      font-size: px(13);
+    }
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}
