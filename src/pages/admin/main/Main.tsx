@@ -1,11 +1,11 @@
 import React from 'react';
-import MainLayout from 'src/layouts/admin/main/MainLayout';
+import AdminLayout from 'src/layouts/admin/main/AdminLayout';
 
 const AdminMain = () => {
   return (
-    <MainLayout>
+    <AdminLayout>
       <div>관리자 페이지에 오신 것을 환영합니다.</div>
-    </MainLayout>
+    </AdminLayout>
   );
 };
 

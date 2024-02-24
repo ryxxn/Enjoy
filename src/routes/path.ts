@@ -11,4 +11,8 @@ export const PATH = {
 export const ADMIN_PATH = {
   DEFAULT: '/admin',
   MAIN: '/admin/main',
+  USERS: '/admin/users',
+  STAMPS: '/admin/stamps',
+  NOTICE: '/admin/notice',
+  MEDIA: '/admin/media',
 };
