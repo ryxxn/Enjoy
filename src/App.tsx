@@ -16,6 +16,7 @@ import AdminUsers from './pages/admin/users/Users';
 import AdminStamps from './pages/admin/stamps/Stamps';
 import AdminNotice from './pages/admin/notice/Notice';
 import AdminMedia from './pages/admin/media/Media';
+import AdminStampDetail from './pages/admin/stamps/detail/StampDetail';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -52,6 +53,7 @@ function App() {
             <Route path='/admin/main' element={<AdminMain />} />
             <Route path='/admin/users' element={<AdminUsers />} />
             <Route path='/admin/stamps' element={<AdminStamps />} />
+            <Route path='/admin/stamps/:id' element={<AdminStampDetail />} />
             <Route path='/admin/notice' element={<AdminNotice />} />
             <Route path='/admin/media' element={<AdminMedia />} />
             <Route path='/admin/' element={<Navigate to='/admin/main' />} />
