@@ -3,7 +3,7 @@ import '../style.scss';
 import Nav from '../Nav/Nav';
 import Header from '../Header/Header';
 
-const MainLayout = ({ children }: { children: React.ReactNode }) => {
+const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className='adminMainLayout'>
       <Header />
@@ -13,4 +13,4 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default MainLayout;
+export default AdminLayout;
