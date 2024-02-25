@@ -11,6 +11,7 @@ import Button from 'src/components/button';
 import Divider from 'src/components/divider';
 import RHFDateTimePicker from 'src/components/RHFForms/RHFDateTimePicker';
 import { ADMIN_PATH } from 'src/routes/path';
+import LabelBox from 'src/components/labelBox';
 
 const AdminStampAdd = () => {
   const [imageFile, setImageFile] = useState<File | Blob | any>();
@@ -54,8 +55,7 @@ const AdminStampAdd = () => {
         <div className='stampDetailContainer'>
           <Card>
             <div className='formContainer'>
-              <div className='line'>
-                <label>사진</label>
+              <LabelBox name='사진'>
                 <label className='stampImage'>
                   {previewUrl ? (
                     <img src={previewUrl || ''} alt='스탬프'></img>
@@ -67,7 +67,7 @@ const AdminStampAdd = () => {
                     onChange={(e: any) => setImageFile(e.target.files[0])}
                   />
                 </label>
-              </div>
+              </LabelBox>
               <div></div>
 
               <div className='line'>

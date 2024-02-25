@@ -19,6 +19,7 @@ import { useConfirmStore } from 'src/store/useConfirmStore';
 import ButtonsGroup from 'src/components/buttons-group';
 import { Modal } from 'src/components/modal';
 import { QrGenerater } from 'src/components/QRGenerater';
+import LabelBox from 'src/components/labelBox';
 
 const AdminStampDetail = () => {
   const { id: stampId } = useParams();
@@ -98,8 +99,7 @@ const AdminStampDetail = () => {
         <div className='stampDetailContainer'>
           <Card>
             <div className='formContainer'>
-              <div className='line'>
-                <label>사진</label>
+              <LabelBox name='사진'>
                 <label className='stampImage'>
                   {previewUrl ? (
                     <img src={previewUrl || ''} alt='스탬프'></img>
@@ -111,34 +111,30 @@ const AdminStampDetail = () => {
                     onChange={(e: any) => setImageFile(e.target.files[0])}
                   />
                 </label>
-              </div>
+              </LabelBox>
               <div></div>
 
-              <div className='line'>
-                <label>이름</label>
+              <LabelBox name='이름'>
                 <RHFTextField
                   name={'name'}
                   readonly={!isEdit}
                   placeholder='이름을 입력해주세요.'
                 />
-              </div>
-              <div className='line'>
-                <label>종류</label>
+              </LabelBox>
+              <LabelBox name='종류'>
                 <RHFTextField
                   name={'kind'}
                   readonly={!isEdit}
                   placeholder='종류를 입력해주세요.'
                 />
-              </div>
+              </LabelBox>
 
-              <div className='line'>
-                <label>행사일</label>
+              <LabelBox name='행사일'>
                 <RHFDateTimePicker name={'date'} readonly={!isEdit} />
-              </div>
-              <div className='line'>
-                <label>생성일</label>
+              </LabelBox>
+              <LabelBox name='생성일'>
                 <p>{stamp?.createdAt?.toLocaleDateString()}</p>
-              </div>
+              </LabelBox>
             </div>
 
             <Divider />
