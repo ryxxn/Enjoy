@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { ADMIN_PATH } from 'src/routes/path';
 import AdminLayout from 'src/layouts/admin/main/AdminLayout';
 import Button from 'src/components/button';
+import TableBody from 'src/components/table/TableBody';
 
 const AdminStamps = () => {
   const navigate = useNavigate();
@@ -44,19 +45,21 @@ const AdminStamps = () => {
         <Card>
           <TableContainer>
             <TableHead headLabel={['순번', '이름', '종류', '생성일']} />
-            {stamps.map((stamp: Stamp, index: number) => (
-              <TableRow
-                key={stamp.id}
-                onClick={() => navigate(`${ADMIN_PATH.STAMPS}/${stamp.id}`)}
-              >
-                <TableCol>{index + 1}</TableCol>
-                <TableCol>{stamp.name}</TableCol>
-                <TableCol>{stamp.kind}</TableCol>
-                <TableCol align='right'>
-                  {stamp.createdAt?.toLocaleDateString()}
-                </TableCol>
-              </TableRow>
-            ))}
+            <TableBody>
+              {stamps.map((stamp: Stamp, index: number) => (
+                <TableRow
+                  key={stamp.id}
+                  onClick={() => navigate(`${ADMIN_PATH.STAMPS}/${stamp.id}`)}
+                >
+                  <TableCol>{index + 1}</TableCol>
+                  <TableCol>{stamp.name}</TableCol>
+                  <TableCol>{stamp.kind}</TableCol>
+                  <TableCol align='right'>
+                    {stamp.createdAt?.toLocaleDateString()}
+                  </TableCol>
+                </TableRow>
+              ))}
+            </TableBody>
           </TableContainer>
         </Card>
       </div>

@@ -18,19 +18,22 @@
       }
     }
   }
-  .tableRow {
-    @include flexLayout(row, space-between, center, 0);
+  .tableBody {
     width: 100%;
-    padding: px(16);
-    box-sizing: border-box;
-    border-bottom: px(1) solid $borderColor;
-    transition: 0.2s;
-    .tableCol {
-      font-size: px(13);
-    }
+    .tableRow {
+      @include flexLayout(row, space-between, center, 0);
+      width: 100%;
+      padding: px(16);
+      box-sizing: border-box;
+      border-bottom: px(1) solid $borderColor;
+      transition: 0.2s;
+      .tableCol {
+        font-size: px(13);
+      }
 
-    &:hover {
-      background-color: #eee;
+      &:hover {
+        background-color: #eee;
+      }
     }
   }
 }
