@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 import './style.scss';
 import Skeleton from '../Skeleton';
 import { format } from 'date-fns';
@@ -25,7 +25,7 @@ export default function RHFDateTimePicker({
   unit,
   ...other
 }: Props) {
-  const { register, watch } = useFormContext();
+  const { control, watch } = useFormContext();
 
   const displayDate = (date: Date | undefined) => {
     try {
@@ -35,6 +35,10 @@ export default function RHFDateTimePicker({
       console.error('date 파싱 중 오류 발생' + err);
       return '';
     }
+  };
+
+  const formatValue = (date: Date) => {
+    return format(new Date(date), "yyyy-MM-dd'T'hh:mm");
   };
 
   if (loading) {
@@ -53,8 +57,20 @@ export default function RHFDateTimePicker({
     );
   }
   return (
-    <div className='RHFInput'>
-      <input type='datetime-local' {...register(name)} {...other} />
-    </div>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field: { value, onChange }, ...props }) => (
+        <div className='RHFInput'>
+          <input
+            type='datetime-local'
+            value={formatValue(value)}
+            onChange={onChange}
+            {...props}
+            {...other}
+          />
+        </div>
+      )}
+    />
   );
 }
