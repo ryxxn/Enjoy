@@ -4,11 +4,12 @@ import './style.scss';
 interface Props {
   name: string;
   children: React.ReactNode;
+  direction?: 'row' | 'column';
 }
 
-const LabelBox = ({ name, children }: Props) => {
+const LabelBox = ({ name, children, direction = 'column' }: Props) => {
   return (
-    <div className='labelBox'>
+    <div className='labelBox' style={{ flexDirection: direction }}>
       <label>{name}</label>
       {children}
     </div>

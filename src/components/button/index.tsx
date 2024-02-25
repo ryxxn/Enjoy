@@ -12,6 +12,7 @@ interface Props extends ButtonProps {
   type?: 'button' | 'submit' | 'reset' | undefined;
   fill?: boolean;
   style?: React.CSSProperties;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -20,6 +21,7 @@ const Button = ({
   children,
   fill = false,
   style = {},
+  disabled = false,
   ...other
 }: Props) => {
   return (
@@ -27,6 +29,7 @@ const Button = ({
       type={type}
       className={`button ${className}`}
       style={fill ? { background: '#000', color: '#fff', ...style } : style}
+      disabled={disabled}
       {...other}
     >
       {children}

@@ -14,7 +14,7 @@ export const Confirm = ({ text, open, onClose, onAction }: Props) => {
   return (
     <div className={`alertContainer ${!open ? 'hide' : ''}`}>
       <div className='alertBox'>
-        <p>{text}</p>
+        <p className='alertText'>{text}</p>
         <ButtonsGroup>
           <Button onClick={onClose}>닫기</Button>
           <Button

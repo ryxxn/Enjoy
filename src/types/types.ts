@@ -15,3 +15,19 @@ export interface Notice {
   content: string;
   createdAt: Date;
 }
+
+export interface User {
+  id: string | undefined;
+  profileImage: string | null;
+  stamps: string[];
+  userEmail: string;
+  userName: string;
+  authority: number;
+  createdAt: Date;
+}
+
+export enum Authority {
+  MASTER = 0,
+  ADMIN = 1,
+  USER = 2,
+}

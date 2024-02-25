@@ -2,16 +2,19 @@ import React from 'react';
 
 interface Props {
   headLabel: string[];
+  widths?: string[];
 }
 
-const TableHead = ({ headLabel }: Props) => {
+const TableHead = ({ headLabel, widths }: Props) => {
   return (
     <thead className='tableHead'>
-      <th>
+      <tr>
         {headLabel.map((label, i) => (
-          <tr>{label}</tr>
+          <th key={i} style={widths?.[i] ? { width: widths[i] } : {}}>
+            {label}
+          </th>
         ))}
-      </th>
+      </tr>
     </thead>
   );
 };
