@@ -6,3 +6,10 @@ export interface Stamp {
   kind: string;
   name: string;
 }
+
+export interface Notice {
+  kind: string;
+  title: string;
+  content: string;
+  createdAt: Date;
+}
