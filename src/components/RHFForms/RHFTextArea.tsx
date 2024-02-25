@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 import './style.scss';
 import Skeleton from '../Skeleton';
 import React from 'react';
@@ -25,14 +25,12 @@ export default function RHFTextarea({
   unit,
   ...other
 }: Props) {
-  const textRef = React.useRef<HTMLTextAreaElement>(null);
+  const handleResizeHeight = (element: HTMLTextAreaElement) => {
+    element.style.height = 'auto';
+    element.style.height = px(element.scrollHeight);
+  };
 
-  const handleResizeHeight = React.useCallback(() => {
-    if (!textRef.current) return;
-    textRef.current.style.height = 'auto';
-    textRef.current.style.height = px(textRef.current.scrollHeight);
-  }, []);
-  const { register, watch } = useFormContext();
+  const { control, watch } = useFormContext();
 
   if (loading) {
     return (
@@ -45,18 +43,32 @@ export default function RHFTextarea({
   if (readonly) {
     return (
       <div className='RHFTextarea'>
-        <div>{watch()[name]}</div>
+        <div dangerouslySetInnerHTML={{ __html: watch()[name] }}></div>
       </div>
     );
   }
   return (
-    <div className='RHFTextarea'>
-      <textarea
-        ref={textRef}
-        {...(register(name), { required })}
-        {...other}
-        onInput={handleResizeHeight}
-      />
-    </div>
+    <Controller
+      name={name}
+      control={control}
+      rules={{ required: required && '필수입니다.' }}
+      render={({
+        field: { value, onChange, ref },
+        fieldState: { error },
+        ...props
+      }) => (
+        <div className='RHFTextarea'>
+          <textarea
+            style={error ? { border: `${px(1)} solid rgb(255, 43, 43)` } : {}}
+            value={value}
+            onChange={onChange}
+            ref={ref}
+            {...other}
+            {...props}
+            onInput={(e: any) => handleResizeHeight(e.target)}
+          />
+        </div>
+      )}
+    />
   );
 }

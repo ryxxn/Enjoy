@@ -20,6 +20,7 @@ import AdminStampDetail from './pages/admin/stamps/detail/StampDetail';
 import AdminStampAdd from './pages/admin/stamps/add/StampAdd';
 import ConfirmProvider from './provider/ConfirmProvider';
 import AdminNoticeAdd from './pages/admin/notice/add/NoticeAdd';
+import AdminNoticeDetail from './pages/admin/notice/detail/NoticeDetail';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -61,6 +62,7 @@ function App() {
               <Route path='/admin/stamps/add' element={<AdminStampAdd />} />
               <Route path='/admin/notice' element={<AdminNotice />} />
               <Route path='/admin/notice/add' element={<AdminNoticeAdd />} />
+              <Route path='/admin/notice/:id' element={<AdminNoticeDetail />} />
               <Route path='/admin/media' element={<AdminMedia />} />
               <Route path='/admin/' element={<Navigate to='/admin/main' />} />
               <Route path='/*' element={<Navigate to='profile' />} />

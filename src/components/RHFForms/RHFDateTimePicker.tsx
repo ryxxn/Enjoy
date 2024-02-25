@@ -3,6 +3,7 @@ import './style.scss';
 import Skeleton from '../Skeleton';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
+import { px } from 'src/utils/styles';
 // ----------------------------------------------------------------------
 
 interface Props
@@ -38,7 +39,11 @@ export default function RHFDateTimePicker({
   };
 
   const formatValue = (date: Date) => {
-    return format(new Date(date), "yyyy-MM-dd'T'hh:mm");
+    try {
+      return format(new Date(date), "yyyy-MM-dd'T'hh:mm");
+    } catch {
+      return '';
+    }
   };
 
   if (loading) {
@@ -60,9 +65,14 @@ export default function RHFDateTimePicker({
     <Controller
       name={name}
       control={control}
-      render={({ field: { value, onChange }, ...props }) => (
+      render={({
+        field: { value, onChange },
+        fieldState: { error },
+        ...props
+      }) => (
         <div className='RHFInput'>
           <input
+            style={error ? { border: `${px(1)} solid rgb(255, 43, 43)` } : {}}
             type='datetime-local'
             value={formatValue(value)}
             onChange={onChange}

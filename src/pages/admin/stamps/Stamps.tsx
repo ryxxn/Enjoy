@@ -24,7 +24,6 @@ const AdminStamps = () => {
     if (stamps.length) return;
 
     getAllStamps().then((res: any) => {
-      console.log(res);
       setStamps(res);
     });
     // eslint-disable-next-line

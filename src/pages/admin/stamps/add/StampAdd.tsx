@@ -70,20 +70,16 @@ const AdminStampAdd = () => {
               </LabelBox>
               <div></div>
 
-              <div className='line'>
-                <label>이름</label>
+              <LabelBox name='이름'>
                 <RHFInput name={'name'} placeholder='이름을 입력해주세요.' />
-              </div>
-              <div className='line'>
-                <label>종류</label>
+              </LabelBox>
+              <LabelBox name='종류'>
                 <RHFInput name={'kind'} placeholder='종류를 입력해주세요.' />
-              </div>
+              </LabelBox>
 
-              <div className='line'>
-                <label>행사일</label>
+              <LabelBox name='행사일'>
                 <RHFDateTimePicker name={'date'} />
-              </div>
-              <div className='line'></div>
+              </LabelBox>
             </div>
 
             <Divider />

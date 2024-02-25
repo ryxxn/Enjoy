@@ -1,6 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import './style.scss';
 import Skeleton from '../Skeleton';
+import { px } from 'src/utils/styles';
 // ----------------------------------------------------------------------
 
 interface Props
@@ -23,7 +24,13 @@ export default function RHFInput({
   unit,
   ...other
 }: Props) {
-  const { register, watch } = useFormContext();
+  const {
+    register,
+    watch,
+    formState: { errors },
+  } = useFormContext();
+
+  const isError = !!errors[name];
 
   if (loading) {
     return (
@@ -42,7 +49,11 @@ export default function RHFInput({
   }
   return (
     <div className='RHFInput'>
-      <input {...register(name)} {...other} />
+      <input
+        style={isError ? { border: `${px(1)} solid rgb(255, 43, 43)` } : {}}
+        {...register(name, { required })}
+        {...other}
+      />
     </div>
   );
 }
