@@ -15,5 +15,6 @@ export const ADMIN_PATH = {
   STAMPS: '/admin/stamps',
   STAMPS_ADD: '/admin/stamps/add',
   NOTICE: '/admin/notice',
+  NOTICE_ADD: '/admin/notice/add',
   MEDIA: '/admin/media',
 };
