@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './style.scss';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FormProvider, RHFTextField } from 'src/components/RHFForms';
+import { FormProvider, RHFInput } from 'src/components/RHFForms';
 import Card from 'src/components/card';
 import AdminLayout from 'src/layouts/admin/main/AdminLayout';
 import {
@@ -115,14 +115,14 @@ const AdminStampDetail = () => {
               <div></div>
 
               <LabelBox name='이름'>
-                <RHFTextField
+                <RHFInput
                   name={'name'}
                   readonly={!isEdit}
                   placeholder='이름을 입력해주세요.'
                 />
               </LabelBox>
               <LabelBox name='종류'>
-                <RHFTextField
+                <RHFInput
                   name={'kind'}
                   readonly={!isEdit}
                   placeholder='종류를 입력해주세요.'

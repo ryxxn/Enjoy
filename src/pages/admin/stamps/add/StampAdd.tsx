@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../detail/style.scss';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { FormProvider, RHFTextField } from 'src/components/RHFForms';
+import { FormProvider, RHFInput } from 'src/components/RHFForms';
 import Card from 'src/components/card';
 import AdminLayout from 'src/layouts/admin/main/AdminLayout';
 import { addStamp } from 'src/services/stamps.services';
@@ -72,17 +72,11 @@ const AdminStampAdd = () => {
 
               <div className='line'>
                 <label>이름</label>
-                <RHFTextField
-                  name={'name'}
-                  placeholder='이름을 입력해주세요.'
-                />
+                <RHFInput name={'name'} placeholder='이름을 입력해주세요.' />
               </div>
               <div className='line'>
                 <label>종류</label>
-                <RHFTextField
-                  name={'kind'}
-                  placeholder='종류를 입력해주세요.'
-                />
+                <RHFInput name={'kind'} placeholder='종류를 입력해주세요.' />
               </div>
 
               <div className='line'>

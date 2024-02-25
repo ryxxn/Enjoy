@@ -15,7 +15,7 @@ interface Props
   unit?: string;
 }
 
-export default function RHFTextField({
+export default function RHFInput({
   name,
   readonly = false,
   required = false,
