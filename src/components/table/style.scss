@@ -36,4 +36,11 @@
       }
     }
   }
+
+  .tableNoData {
+    width: 100%;
+    @include flexLayout(row, center, center, 0);
+    margin-top: px(48);
+    margin-bottom: px(32);
+  }
 }
