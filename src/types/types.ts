@@ -22,12 +22,20 @@ export interface User {
   stamps: string[];
   userEmail: string;
   userName: string;
-  authority: number;
+  authority: Authority;
   createdAt: Date;
+  status: UserStaus;
 }
 
 export enum Authority {
   MASTER = 0,
   ADMIN = 1,
   USER = 2,
+}
+
+export enum UserStaus {
+  APPROVED = 0,
+  PENDING = 1,
+  REJECTED = 2,
+  DENIED = 3,
 }

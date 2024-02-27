@@ -22,6 +22,7 @@
     "heic2any": "^0.0.4",
     "lodash": "^4.17.21",
     "lucide-react": "^0.338.0",
+    "notistack": "^3.0.1",
     "qrcode.react": "^3.1.0",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",

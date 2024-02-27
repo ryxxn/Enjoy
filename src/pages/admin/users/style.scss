@@ -2,6 +2,18 @@
 @import 'src/styles/colors.scss';
 
 .adminUsersContainer {
+  .userTableTollbar {
+    width: 100%;
+    @include flexLayout(row, space-between, center, 0);
+    .inputGroup {
+      width: 100%;
+      display: flex;
+      gap: px(16);
+    }
+    * {
+      font-size: px(12);
+    }
+  }
 }
 
 .adminUserDetailContainer {

@@ -7,7 +7,11 @@ interface Props {
 
 const TableNoData = ({ children, isNotFound }: Props) => {
   if (!isNotFound) return null;
-  return <div className='tableNoData'>{children}</div>;
+  return (
+    <tr className='tableNoData'>
+      <td>{children}</td>
+    </tr>
+  );
 };
 
 export default TableNoData;

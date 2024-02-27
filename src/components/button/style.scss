@@ -6,6 +6,7 @@
   border: px(1) solid #e5e7eb;
   border-radius: px(8);
   background-color: $white;
+  transition: 0.2s;
   cursor: pointer;
 
   &:hover {
@@ -14,5 +15,6 @@
 
   &:disabled {
     opacity: 0.6;
+    cursor: not-allowed;
   }
 }

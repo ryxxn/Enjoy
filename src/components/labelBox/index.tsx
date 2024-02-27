@@ -5,11 +5,17 @@ interface Props {
   name: string;
   children: React.ReactNode;
   direction?: 'row' | 'column';
+  style?: React.CSSProperties;
 }
 
-const LabelBox = ({ name, children, direction = 'column' }: Props) => {
+const LabelBox = ({
+  name,
+  children,
+  direction = 'column',
+  style = {},
+}: Props) => {
   return (
-    <div className='labelBox' style={{ flexDirection: direction }}>
+    <div className='labelBox' style={{ ...style, flexDirection: direction }}>
       <label>{name}</label>
       {children}
     </div>

@@ -3,6 +3,7 @@ import './App.css';
 import './styles/globals.scss';
 import './styles/colors.scss';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { SnackbarProvider } from 'notistack';
 import { Login } from './pages/user/Login';
 import { Profile } from './pages/user/Profile';
 import { Stamps } from './pages/user/Stamps';
@@ -12,7 +13,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
 import AdminMain from './pages/admin/main/Main';
 import { useUserStore } from './store/userStore';
-import AdminUsers from './pages/admin/users/Users';
+import AdminUsers from './pages/admin/users';
 import AdminStamps from './pages/admin/stamps/Stamps';
 import AdminNotice from './pages/admin/notice/Notice';
 import AdminMedia from './pages/admin/media/Media';
@@ -45,37 +46,45 @@ function App() {
   const isAdmin = true;
 
   return (
-    <ConfirmProvider>
-      <BrowserRouter>
-        <>
-          {isLoggedIn ? (
-            <Routes>
-              <Route path='/profile' element={<Profile />} />
-              <Route path='/stamps' element={<Stamps />} />
-              <Route path='/notice' element={<Notice />} />
-              {/* <Route path='/notice/:id' element={<Notice />} /> */}
-              <Route path='/media' element={<Media />} />
-              <Route path='/admin/main' element={<AdminMain />} />
-              <Route path='/admin/users' element={<AdminUsers />} />
-              <Route path='/admin/stamps' element={<AdminStamps />} />
-              <Route path='/admin/stamps/:id' element={<AdminStampDetail />} />
-              <Route path='/admin/stamps/add' element={<AdminStampAdd />} />
-              <Route path='/admin/notice' element={<AdminNotice />} />
-              <Route path='/admin/notice/add' element={<AdminNoticeAdd />} />
-              <Route path='/admin/notice/:id' element={<AdminNoticeDetail />} />
-              <Route path='/admin/media' element={<AdminMedia />} />
-              <Route path='/admin/' element={<Navigate to='/admin/main' />} />
-              <Route path='/*' element={<Navigate to='profile' />} />
-            </Routes>
-          ) : (
-            <Routes>
-              <Route path='/login' element={<Login />} />
-              <Route path='/*' element={<Navigate to='login' />} />
-            </Routes>
-          )}
-        </>
-      </BrowserRouter>
-    </ConfirmProvider>
+    <SnackbarProvider>
+      <ConfirmProvider>
+        <BrowserRouter>
+          <>
+            {isLoggedIn ? (
+              <Routes>
+                <Route path='/profile' element={<Profile />} />
+                <Route path='/stamps' element={<Stamps />} />
+                <Route path='/notice' element={<Notice />} />
+                {/* <Route path='/notice/:id' element={<Notice />} /> */}
+                <Route path='/media' element={<Media />} />
+                <Route path='/admin/main' element={<AdminMain />} />
+                <Route path='/admin/users' element={<AdminUsers />} />
+                <Route path='/admin/stamps' element={<AdminStamps />} />
+                <Route
+                  path='/admin/stamps/:id'
+                  element={<AdminStampDetail />}
+                />
+                <Route path='/admin/stamps/add' element={<AdminStampAdd />} />
+                <Route path='/admin/notice' element={<AdminNotice />} />
+                <Route path='/admin/notice/add' element={<AdminNoticeAdd />} />
+                <Route
+                  path='/admin/notice/:id'
+                  element={<AdminNoticeDetail />}
+                />
+                <Route path='/admin/media' element={<AdminMedia />} />
+                <Route path='/admin/' element={<Navigate to='/admin/main' />} />
+                <Route path='/*' element={<Navigate to='profile' />} />
+              </Routes>
+            ) : (
+              <Routes>
+                <Route path='/login' element={<Login />} />
+                <Route path='/*' element={<Navigate to='login' />} />
+              </Routes>
+            )}
+          </>
+        </BrowserRouter>
+      </ConfirmProvider>
+    </SnackbarProvider>
   );
 }
 

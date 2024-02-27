@@ -1,0 +1,18 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.fieldSetComponent {
+  box-sizing: border-box;
+  border: px(1) solid $borderColor;
+  border-radius: px(8);
+  background-color: $white;
+  padding: 0;
+  margin: 0;
+  legend {
+    margin-left: px(8);
+    color: #aaa;
+  }
+  *:not(legend) {
+    border: none !important;
+  }
+}

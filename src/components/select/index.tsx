@@ -5,7 +5,7 @@ interface Props {
   name: string;
   selected: number;
   setSelected: (selected: number) => void;
-  data: { value: number; label: string }[];
+  data: { value: number | any; label: string }[];
   placeholder?: string;
 }
 
