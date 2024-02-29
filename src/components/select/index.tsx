@@ -3,8 +3,8 @@ import './style.scss';
 
 interface Props {
   name: string;
-  selected: number;
-  setSelected: (selected: number) => void;
+  selected: any;
+  setSelected: (selected: any) => void;
   data: { value: number | any; label: string }[];
   placeholder?: string;
 }
