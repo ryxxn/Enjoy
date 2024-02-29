@@ -4,7 +4,7 @@
 .adminUsersContainer {
   .userTableTollbar {
     width: 100%;
-    @include flexLayout(row, space-between, center, 0);
+    @include flexLayout(row, space-between, center, 32);
     .inputGroup {
       width: 100%;
       display: flex;
