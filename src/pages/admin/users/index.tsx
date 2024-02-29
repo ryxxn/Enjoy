@@ -23,7 +23,9 @@ import UserTableTollbar from './UserTableTollbar';
 import Badge from 'src/components/badge';
 import TableSkeleton from 'src/components/table/TableSkeleton';
 
+// ----------------------------------------------------------------------
 const THEAD_WIDTHS = ['5%', '20%', '20%', '15%', '15%', '15%', '10%'];
+
 const THEAD_LABEL = [
   '순번',
   '이름',
@@ -33,6 +35,7 @@ const THEAD_LABEL = [
   '생성일',
   '상태',
 ];
+// ----------------------------------------------------------------------
 
 const AdminUsers = () => {
   const { stamps } = useStamps();
@@ -147,7 +150,7 @@ const AdminUsers = () => {
                     </TableCol>
                   </TableRow>
                 ))}
-              <TableNoData isNotFound={!users.length}>
+              <TableNoData isNotFound={!users.length && !loading}>
                 사용자가 없습니다.
               </TableNoData>
             </TableBody>
