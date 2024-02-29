@@ -18,22 +18,26 @@ const INIT_DATA: PageResponseType<User> = {
 
 interface ReturnType extends PageResponseType<User> {
   refetch: (searchQuery: UsersSearchQuery) => Promise<void>;
+  loading: boolean;
 }
 
 const useUsers = (searchQuery: UsersSearchQuery): ReturnType => {
   const [data, setData] = useState<PageResponseType<User>>(INIT_DATA);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const { enqueueSnackbar } = useSnackbar();
 
   const fetchUsers = async (query: UsersSearchQuery) => {
     try {
+      setLoading(true);
       const res: PageResponseType<User> = await getAllUsers(query);
-      console.log(res);
       setData(res);
     } catch (err) {
       enqueueSnackbar('사용자 정보를 불러오는데 실패하였습니다.', {
         variant: 'error',
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -44,6 +48,7 @@ const useUsers = (searchQuery: UsersSearchQuery): ReturnType => {
 
   return {
     ...data,
+    loading,
     refetch: fetchUsers,
   };
 };

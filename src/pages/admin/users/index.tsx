@@ -21,6 +21,7 @@ import useUsers from './useUsers';
 import useStamps from '../stamps/useStamps';
 import UserTableTollbar from './UserTableTollbar';
 import Badge from 'src/components/badge';
+import TableSkeleton from 'src/components/table/TableSkeleton';
 
 const THEAD_WIDTHS = ['5%', '20%', '20%', '15%', '15%', '15%', '10%'];
 const THEAD_LABEL = [
@@ -43,8 +44,7 @@ const AdminUsers = () => {
     perPage: 5,
     filter: {
       authority: '',
-      userName: '',
-      userEmail: '',
+      nameOrEmail: '',
       status: '',
     },
     order: 'asc',
@@ -59,6 +59,7 @@ const AdminUsers = () => {
     firstVisible,
     lastVisible,
     refetch,
+    loading,
   } = useUsers(searchQuery);
 
   const page = searchQuery.page;
@@ -96,6 +97,15 @@ const AdminUsers = () => {
     }));
   };
 
+  const handleSearch = async () => {
+    await refetch({
+      ...searchQuery,
+      firstVisible: null,
+      lastVisible: null,
+      page: 1,
+    });
+  };
+
   return (
     <AdminLayout>
       <div className='adminUsersContainer'>
@@ -104,35 +114,39 @@ const AdminUsers = () => {
           <UserTableTollbar
             searchQuery={searchQuery}
             onSearchQueryChange={onSearchQueryChange}
-            onSearch={() => refetch(searchQuery)}
+            onSearch={handleSearch}
           />
         </Card>
         <Card>
           <TableContainer>
             <TableHead headLabel={THEAD_LABEL} widths={THEAD_WIDTHS} />
             <TableBody>
-              {users.map((user: User, i: number) => (
-                <TableRow key={user.id} onClick={() => setSelectedUser(user)}>
-                  <TableCol width='5%'>{(page - 1) * perPage + i + 1}</TableCol>
-                  <TableCol width='20%'>
-                    {truncateString(user.userName, 10)}
-                  </TableCol>
-                  <TableCol width='20%'>{user.userEmail}</TableCol>
-                  <TableCol width='15%'>{user.stamps?.length} 개</TableCol>
-                  <TableCol width='15%'>
-                    {getAuthority(user.authority)}
-                  </TableCol>
-                  <TableCol width='15%'>
-                    {format(user.createdAt, 'yyyy.MM.dd')}
-                  </TableCol>
-                  <TableCol width='10%'>
-                    <Badge
-                      label={getUserStatus(user.status)}
-                      status={getUserBadgeStatus(user.status)}
-                    />
-                  </TableCol>
-                </TableRow>
-              ))}
+              <TableSkeleton loading={loading} />
+              {!loading &&
+                users.map((user: User, i: number) => (
+                  <TableRow key={user.id} onClick={() => setSelectedUser(user)}>
+                    <TableCol width='5%'>
+                      {(page - 1) * perPage + i + 1}
+                    </TableCol>
+                    <TableCol width='20%'>
+                      {truncateString(user.userName, 10)}
+                    </TableCol>
+                    <TableCol width='20%'>{user.userEmail}</TableCol>
+                    <TableCol width='15%'>{user.stamps?.length} 개</TableCol>
+                    <TableCol width='15%'>
+                      {getAuthority(user.authority)}
+                    </TableCol>
+                    <TableCol width='15%'>
+                      {format(user.createdAt, 'yyyy.MM.dd')}
+                    </TableCol>
+                    <TableCol width='10%'>
+                      <Badge
+                        label={getUserStatus(user.status)}
+                        status={getUserBadgeStatus(user.status)}
+                      />
+                    </TableCol>
+                  </TableRow>
+                ))}
               <TableNoData isNotFound={!users.length}>
                 사용자가 없습니다.
               </TableNoData>
