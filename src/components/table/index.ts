@@ -8,3 +8,4 @@ export { default as TableRow } from './TableRow';
 export { default as TableCol } from './TableCol';
 export { default as TableHead } from './TableHead';
 export { default as TablePagination } from './TablePagination';
+export { default as TableSkeleton } from './TableSkeleton';
