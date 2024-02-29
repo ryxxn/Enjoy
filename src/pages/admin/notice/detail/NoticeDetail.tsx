@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FormProvider, RHFInput, RHFTextArea } from 'src/components/RHFForms';
+import { FormProvider, RHFInput } from 'src/components/RHFForms';
 import Button from 'src/components/button';
 import ButtonsGroup from 'src/components/buttons-group';
 import Card from 'src/components/card';
+import { Editor } from 'src/components/editor';
 import LabelBox from 'src/components/labelBox';
 import AdminLayout from 'src/layouts/admin/main/AdminLayout';
 import { ADMIN_PATH } from 'src/routes/path';
@@ -21,6 +22,8 @@ const AdminNoticeDetail = () => {
 
   const [notice, setNotice] = useState<Notice>();
 
+  const [content, setContent] = useState<string>('');
+
   const [isEdit, setIsEdit] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -35,7 +38,7 @@ const AdminNoticeDetail = () => {
 
   const onSubmit = async (data: Notice) => {
     console.log(data);
-    const { kind, title, content } = data;
+    const { kind, title } = data;
     await updateNotice({ id: noticeId, kind, title, content });
     setIsEdit(false);
   };
@@ -49,6 +52,7 @@ const AdminNoticeDetail = () => {
     if (!noticeId) return;
     getNotice(noticeId).then((res: any) => {
       setNotice(res);
+      setContent(res?.content || '');
       reset(res);
     });
   };
@@ -81,11 +85,11 @@ const AdminNoticeDetail = () => {
               />
             </LabelBox>
             <LabelBox name='내용'>
-              <RHFTextArea
-                name='content'
+              <Editor
+                value={content}
+                onChange={setContent}
                 placeholder='내용을 입력해주세요.'
                 readonly={!isEdit}
-                required
               />
             </LabelBox>
           </div>

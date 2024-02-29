@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { FormProvider, RHFInput, RHFTextArea } from 'src/components/RHFForms';
+import { FormProvider, RHFInput } from 'src/components/RHFForms';
 import Button from 'src/components/button';
 import ButtonsGroup from 'src/components/buttons-group';
 import Card from 'src/components/card';
+import { Editor } from 'src/components/editor';
 import LabelBox from 'src/components/labelBox';
 import AdminLayout from 'src/layouts/admin/main/AdminLayout';
 import { ADMIN_PATH } from 'src/routes/path';
@@ -14,13 +15,15 @@ import { Notice } from 'src/types/types';
 const AdminNoticeAdd = () => {
   const navigate = useNavigate();
 
+  const [content, setContent] = useState<string>('');
+
   const methods = useForm<Notice>({});
 
   const { handleSubmit } = methods;
 
   const onSubmit = async (data: Notice) => {
     console.log(data);
-    const { kind, title, content } = data;
+    const { kind, title } = data;
     await addNotice({ kind, title, content });
     navigate(ADMIN_PATH.NOTICE);
   };
@@ -45,10 +48,10 @@ const AdminNoticeAdd = () => {
               />
             </LabelBox>
             <LabelBox name='내용'>
-              <RHFTextArea
-                name='content'
+              <Editor
+                value={content}
+                onChange={setContent}
                 placeholder='내용을 입력해주세요.'
-                required
               />
             </LabelBox>
           </div>
