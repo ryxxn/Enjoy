@@ -28,14 +28,13 @@ export interface User {
 }
 
 export enum Authority {
-  MASTER = 0,
-  ADMIN = 1,
-  USER = 2,
+  MASTER = '0',
+  ADMIN = '1',
+  USER = '2',
 }
 
 export enum UserStaus {
-  APPROVED = 0,
-  PENDING = 1,
-  REJECTED = 2,
-  DENIED = 3,
+  APPROVED = '0',
+  PENDING = '1',
+  REJECTED = '2',
 }
