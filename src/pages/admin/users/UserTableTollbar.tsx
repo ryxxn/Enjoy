@@ -23,7 +23,7 @@ const StatusOption = [
   { value: '', label: '전체선택' },
   { value: UserStaus.APPROVED, label: '승인' },
   { value: UserStaus.PENDING, label: '대기' },
-  { value: UserStaus.DENIED, label: '거절' },
+  { value: UserStaus.REJECTED, label: '거절' },
 ];
 // ----------------------------------------------------------------------
 
@@ -51,22 +51,18 @@ const UserTableTollbar = ({
             data={StatusOption}
           />
         </Fieldset>
-        <Fieldset label='이름'>
+        <Fieldset
+          label='이름 및 이메일'
+          style={{
+            flex: 1,
+          }}
+        >
           <Input
-            value={searchQuery.filter.userName}
+            value={searchQuery.filter.nameOrEmail}
             onChange={(e: any) =>
-              onSearchQueryChange('userName', e.target.value)
+              onSearchQueryChange('nameOrEmail', e.target.value)
             }
-            placeholder='이름을 입력해주세요.'
-          />
-        </Fieldset>
-        <Fieldset label='이메일'>
-          <Input
-            value={searchQuery.filter.userEmail}
-            onChange={(e: any) =>
-              onSearchQueryChange('userEmail', e.target.value)
-            }
-            placeholder='이메일을 입력해주세요.'
+            placeholder='이름 또는 이메일을 입력해주세요.'
           />
         </Fieldset>
       </div>
