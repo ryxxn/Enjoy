@@ -14,6 +14,7 @@ import AdminLayout from 'src/layouts/admin/main/AdminLayout';
 import Button from 'src/components/button';
 import TableBody from 'src/components/table/TableBody';
 import useStamps from './useStamps';
+import TableNoData from 'src/components/table/TableNoData';
 
 const AdminStamps = () => {
   const navigate = useNavigate();
@@ -51,6 +52,9 @@ const AdminStamps = () => {
                     </TableCol>
                   </TableRow>
                 ))}
+              <TableNoData isNotFound={!stamps.length && !loading}>
+                스탬프가 없습니다.
+              </TableNoData>
             </TableBody>
           </TableContainer>
         </Card>
