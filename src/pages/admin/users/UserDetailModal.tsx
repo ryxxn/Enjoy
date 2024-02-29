@@ -3,7 +3,7 @@ import './style.scss';
 import Button from 'src/components/button';
 import ButtonsGroup from 'src/components/buttons-group';
 import LabelBox from 'src/components/labelBox';
-import { Authority, Stamp, User } from 'src/types/types';
+import { Authority, Stamp, User, UserStaus } from 'src/types/types';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import Divider from 'src/components/divider';
@@ -13,6 +13,7 @@ import { Modal } from 'src/components/modal';
 import { px } from 'src/utils/styles';
 import { updateUser } from 'src/services/usersManage.services';
 import { isEqual } from 'lodash';
+import { useSnackbar } from 'notistack';
 
 interface Props {
   open: boolean;
@@ -27,8 +28,14 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
     return stamps.find((stamp) => stamp.id === id) as Stamp;
   };
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const [authority, setAuthority] = useState<Authority>(
     user.authority || Authority.USER
+  );
+
+  const [status, setStatus] = useState<UserStaus>(
+    user.status || UserStaus.APPROVED
   );
 
   const initUserStamps = user.stamps?.map((stampId) => findStamp(stampId));
@@ -49,20 +56,29 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
   const stampIds = userStamps.map((stamp) => stamp.id);
   const isChangedAuthority = user.authority === authority;
   const isChangedStamps = isEqual(stampIds, user.stamps);
-  const isDataChanged = isChangedAuthority && isChangedStamps;
+  const isChangedStatus = isEqual(status, user.status);
+  const isDataChanged =
+    isChangedAuthority && isChangedStamps && isChangedStatus;
 
   const handleSave = async () => {
     if (isDataChanged) {
       return;
     }
-    await updateUser({
-      id: user.id,
-      authority,
-      stamps: stampIds,
-    });
+    try {
+      await updateUser({
+        id: user.id,
+        authority,
+        status,
+        stamps: stampIds,
+      });
 
-    onClose();
-    refetch();
+      enqueueSnackbar('수정이 완료되었습니다.', { variant: 'success' });
+
+      onClose();
+      refetch();
+    } catch (err) {
+      enqueueSnackbar('수정에 실패하였습니다.', { variant: 'error' });
+    }
   };
 
   const otherStamps = stamps.filter(
@@ -87,6 +103,18 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
                 data={[
                   { value: Authority.ADMIN, label: '관리자' },
                   { value: Authority.USER, label: '사용자' },
+                ]}
+              />
+            </LabelBox>
+            <LabelBox name='상태'>
+              <Select
+                name={'상태'}
+                selected={status}
+                setSelected={setStatus}
+                data={[
+                  { value: UserStaus.APPROVED, label: '승인' },
+                  { value: UserStaus.PENDING, label: '대기' },
+                  { value: UserStaus.REJECTED, label: '거절' },
                 ]}
               />
             </LabelBox>
