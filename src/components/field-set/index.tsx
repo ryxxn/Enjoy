@@ -1,14 +1,18 @@
 import React from 'react';
 import './style.scss';
 
-interface Props {
+interface Props
+  extends React.DetailedHTMLProps<
+    React.FieldsetHTMLAttributes<HTMLFieldSetElement>,
+    HTMLFieldSetElement
+  > {
   label: string;
   children: React.ReactNode;
 }
 
-const Fieldset = ({ label, children }: Props) => {
+const Fieldset = ({ label, children, ...other }: Props) => {
   return (
-    <fieldset className='fieldSetComponent'>
+    <fieldset className='fieldSetComponent' {...other}>
       <legend>{label}</legend>
       {children}
     </fieldset>
