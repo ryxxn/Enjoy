@@ -16,7 +16,7 @@ const Nav = () => {
 
   const avatarSrc =
     userData?.profileImage ||
-    'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg&ga=GA1.1.1700460183.1708732800&semt=ais';
+    `${process.env.PUBLIC_URL}/assets/blank-profile.png`;
 
   const { pathname } = useLocation();
 
@@ -32,7 +32,7 @@ const Nav = () => {
       <nav className='adminNavLayout'>
         <Card className='avatar'>
           <Avatar src={avatarSrc} size={32} />
-          박도륜
+          {userData?.userName}
         </Card>
         <Divider />
         <ul className='list'>

@@ -7,7 +7,7 @@ const Header = () => {
 
   const avatarSrc =
     userData?.profileImage ||
-    'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg&ga=GA1.1.1700460183.1708732800&semt=ais';
+    `${process.env.PUBLIC_URL}/assets/blank-profile.png`;
 
   return (
     <header className='adminHeaderLayout'>
