@@ -9,7 +9,7 @@ interface Props {
   page: number;
   totalPages: number;
   isLastPage: boolean;
-  isLoading: boolean;
+  loading: boolean;
   handleNextPage: VoidFunction;
   handlePrevPage: VoidFunction;
 }
@@ -18,7 +18,7 @@ const TablePagination = ({
   page,
   totalPages,
   isLastPage,
-  isLoading,
+  loading,
   handleNextPage,
   handlePrevPage,
 }: Props) => {
@@ -31,14 +31,14 @@ const TablePagination = ({
         <Button
           className='paginationButton'
           onClick={handlePrevPage}
-          disabled={page <= 1}
+          disabled={page <= 1 || loading}
         >
           <MdOutlineArrowBackIos size={16} />
         </Button>
         <Button
           className='paginationButton'
           onClick={handleNextPage}
-          disabled={isLastPage}
+          disabled={isLastPage || loading}
         >
           <MdOutlineArrowForwardIos size={16} />
         </Button>
