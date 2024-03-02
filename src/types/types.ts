@@ -17,6 +17,7 @@ export interface Notice {
 }
 
 export interface User {
+  objectID?: string;
   id: string | undefined;
   profileImage: string | null;
   stamps: string[];
@@ -25,6 +26,7 @@ export interface User {
   authority: Authority;
   createdAt: Date;
   status: UserStaus;
+  keywords: string[];
 }
 
 export enum Authority {
