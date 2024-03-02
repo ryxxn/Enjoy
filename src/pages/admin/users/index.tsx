@@ -43,52 +43,23 @@ const AdminUsers = () => {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   const [searchQuery, setSearchQuery] = useState<UsersSearchQuery>({
-    page: 1,
-    perPage: 5,
+    page: 0,
+    perPage: 7,
     filter: {
       authority: '',
       nameOrEmail: '',
       status: '',
     },
-    order: 'asc',
-    firstVisible: null,
-    lastVisible: null,
+    order: 'desc',
   });
 
   const {
     data: users,
     totalPages,
-    isLastPage,
-    firstVisible,
-    lastVisible,
-    refetch,
+    fetchUsers,
     loading,
+    refresh,
   } = useUsers(searchQuery);
-
-  const page = searchQuery.page;
-  const perPage = searchQuery.perPage;
-
-  const handleNextPage = async () => {
-    const newQuery = {
-      ...searchQuery,
-      firstVisible: null,
-      lastVisible,
-      page: page + 1,
-    };
-    setSearchQuery(newQuery);
-    await refetch(newQuery);
-  };
-
-  const handlePrevPage = async () => {
-    const newQuery = {
-      ...searchQuery,
-      firstVisible,
-      lastVisible: null,
-      page: page - 1,
-    };
-    setSearchQuery(newQuery);
-    await refetch(newQuery);
-  };
 
   const onSearchQueryChange = (name: string, value: string) => {
     setSearchQuery((prev) => ({
@@ -100,14 +71,21 @@ const AdminUsers = () => {
     }));
   };
 
-  const handleSearch = async () => {
-    await refetch({
+  const fetchQueryAndUsers = async (query: Partial<UsersSearchQuery>) => {
+    const newQuery = {
       ...searchQuery,
-      firstVisible: null,
-      lastVisible: null,
-      page: 1,
-    });
+      ...query,
+    };
+    setSearchQuery(newQuery);
+    await fetchUsers(newQuery);
   };
+
+  const handleSearch = async (newPage: number) => {
+    await fetchQueryAndUsers({ page: newPage });
+  };
+
+  const page = searchQuery.page;
+  const perPage = searchQuery.perPage;
 
   return (
     <AdminLayout>
@@ -117,7 +95,7 @@ const AdminUsers = () => {
           <UserTableTollbar
             searchQuery={searchQuery}
             onSearchQueryChange={onSearchQueryChange}
-            onSearch={handleSearch}
+            onSearch={() => handleSearch(0)}
           />
         </Card>
         <Card>
@@ -127,14 +105,17 @@ const AdminUsers = () => {
               <TableSkeleton loading={loading} />
               {!loading &&
                 users.map((user: User, i: number) => (
-                  <TableRow key={user.id} onClick={() => setSelectedUser(user)}>
-                    <TableCol width='5%'>
-                      {(page - 1) * perPage + i + 1}
-                    </TableCol>
+                  <TableRow
+                    key={user.objectID}
+                    onClick={() => setSelectedUser(user)}
+                  >
+                    <TableCol width='5%'>{page * perPage + i + 1}</TableCol>
                     <TableCol width='20%'>
                       {truncateString(user.userName, 10)}
                     </TableCol>
-                    <TableCol width='20%'>{user.userEmail}</TableCol>
+                    <TableCol width='20%'>
+                      {truncateString(user.userEmail, 20)}
+                    </TableCol>
                     <TableCol width='15%'>{user.stamps?.length} 개</TableCol>
                     <TableCol width='15%'>
                       {getAuthority(user.authority)}
@@ -157,12 +138,12 @@ const AdminUsers = () => {
           </TableContainer>
         </Card>
         <TablePagination
-          page={page}
+          page={page + 1}
           totalPages={totalPages}
-          isLastPage={isLastPage}
-          isLoading={false}
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
+          isLastPage={page + 1 >= totalPages}
+          loading={loading}
+          handlePrevPage={() => handleSearch(page - 1)}
+          handleNextPage={() => handleSearch(page + 1)}
         />
       </div>
 
@@ -172,7 +153,7 @@ const AdminUsers = () => {
           onClose={() => setSelectedUser(null)}
           user={selectedUser}
           stamps={stamps}
-          refetch={() => refetch(searchQuery)}
+          refetch={() => refresh(searchQuery)}
         />
       )}
     </AdminLayout>
