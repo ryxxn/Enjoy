@@ -66,7 +66,7 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
     }
     try {
       await updateUser({
-        id: user.id,
+        id: user.objectID,
         authority,
         status,
         stamps: stampIds,
