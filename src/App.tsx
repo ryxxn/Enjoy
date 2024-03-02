@@ -32,10 +32,12 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       // user 판명을 듣고
+      console.log('App.tsx -> user', user);
       if (user) {
         // 있으면
-        setIsLoggedIn(true); // 로그인 됨
-        // fetchUserData();
+        fetchUserData().then(() => {
+          setIsLoggedIn(true); // 로그인 됨
+        });
       } else {
         setIsLoggedIn(false); // 로그인 안됨
       }
