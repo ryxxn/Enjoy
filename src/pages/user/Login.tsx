@@ -64,7 +64,9 @@ export const Login = () => {
       if (usePopupLogin) {
         await googleSignUpWithPopup();
       } else {
-        await googleSignUpWithRedirect();
+        // firebase 인증 문제 해결 전까지는 popup 방식으로 진행
+        await googleSignUpWithPopup();
+        // await googleSignUpWithRedirect();
       }
       setLoading(false);
       // navigate('/profile');
