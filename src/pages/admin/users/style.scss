@@ -21,6 +21,7 @@
     width: 100%;
     margin-bottom: px(16);
     margin-top: px(8);
+    @include flexLayout(row, flex-start, center, 16);
   }
   .grid {
     display: grid;
