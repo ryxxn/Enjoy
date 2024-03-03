@@ -8,6 +8,7 @@
   box-sizing: border-box;
   border-radius: px(4);
   font-size: px(11);
+  text-align: center;
 
   &[data-status='0'] {
     background-color: #dce3e8;
