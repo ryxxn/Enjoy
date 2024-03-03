@@ -37,7 +37,6 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       // user 판명을 듣고
-      console.log('App.tsx -> user', user);
       if (user) {
         // 있으면
         fetchUserData().then(() => {

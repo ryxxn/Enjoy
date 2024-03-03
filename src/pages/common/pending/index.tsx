@@ -6,12 +6,15 @@ const TextBox = styled.div`
   width: 100%;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 8px;
 
   h1 {
     color: var(--main-color);
     font-size: 52px;
+    margin-bottom: 20px;
   }
 `;
 

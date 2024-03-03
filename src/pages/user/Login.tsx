@@ -69,6 +69,7 @@ export const Login = () => {
         // await googleSignUpWithRedirect();
       }
       setLoading(false);
+      window.location.reload();
       // navigate('/profile');
     } catch (err: any) {
       setLoading(false);
