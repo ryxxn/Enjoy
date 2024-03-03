@@ -35,6 +35,7 @@ const THEAD_LABEL = [
   '생성일',
   '상태',
 ];
+
 // ----------------------------------------------------------------------
 
 const AdminUsers = () => {
@@ -57,8 +58,8 @@ const AdminUsers = () => {
     data: users,
     totalPages,
     fetchUsers,
+    refreshUsers,
     loading,
-    refresh,
   } = useUsers(searchQuery);
 
   const onSearchQueryChange = (name: string, value: string) => {
@@ -105,10 +106,7 @@ const AdminUsers = () => {
               <TableSkeleton loading={loading} />
               {!loading &&
                 users.map((user: User, i: number) => (
-                  <TableRow
-                    key={user.objectID}
-                    onClick={() => setSelectedUser(user)}
-                  >
+                  <TableRow key={user.id} onClick={() => setSelectedUser(user)}>
                     <TableCol width='5%'>{page * perPage + i + 1}</TableCol>
                     <TableCol width='20%'>
                       {truncateString(user.userName, 10)}
@@ -153,7 +151,7 @@ const AdminUsers = () => {
           onClose={() => setSelectedUser(null)}
           user={selectedUser}
           stamps={stamps}
-          refetch={() => refresh(searchQuery)}
+          refetch={() => refreshUsers(searchQuery)}
         />
       )}
     </AdminLayout>
