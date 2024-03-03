@@ -14,6 +14,9 @@ import { px } from 'src/utils/styles';
 import { updateUser } from 'src/services/usersManage.services';
 import { isEqual } from 'lodash';
 import { useSnackbar } from 'notistack';
+import Badge from 'src/components/badge';
+import { getUserBadgeStatus, getUserStatus } from './utils';
+import { useCachingUserStore } from './useCachingUserStore';
 
 interface Props {
   open: boolean;
@@ -44,6 +47,8 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
 
   const [stampAddModalOpen, setStampAddModalOpen] = useState<boolean>(false);
 
+  const { updateCachedUser } = useCachingUserStore();
+
   const handleDeleteStamp = (stampId: string) => {
     setUserStamps((prev) => prev.filter((stamp) => stamp.id !== stampId));
   };
@@ -72,11 +77,19 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
         stamps: stampIds,
       });
 
+      updateCachedUser(user.id!, {
+        ...user,
+        authority,
+        status,
+        stamps: stampIds,
+      });
+
       enqueueSnackbar('수정이 완료되었습니다.', { variant: 'success' });
 
       onClose();
       refetch();
     } catch (err) {
+      console.error(err);
       enqueueSnackbar('수정에 실패하였습니다.', { variant: 'error' });
     }
   };
@@ -89,7 +102,13 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
     <>
       <Modal open={open} setOpen={() => onClose()}>
         <div className='adminUserDetailContainer'>
-          <header>{user.userName}</header>
+          <header>
+            {user.userName}
+            <Badge
+              label={getUserStatus(status)}
+              status={getUserBadgeStatus(status)}
+            />
+          </header>
           <Divider />
           <div className='grid'>
             <LabelBox name='Email'>
