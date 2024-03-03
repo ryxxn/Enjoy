@@ -22,9 +22,11 @@ import AdminStampAdd from './pages/admin/stamps/add/StampAdd';
 import ConfirmProvider from './provider/ConfirmProvider';
 import AdminNoticeAdd from './pages/admin/notice/add/NoticeAdd';
 import AdminNoticeDetail from './pages/admin/notice/detail/NoticeDetail';
-import { Authority } from './types/types';
-import { Splash } from './pages/common/Splash';
+import { Authority, UserStaus } from './types/types';
+import { Splash } from './pages/common/splash/Splash';
 import NoticeDetail from './pages/user/notices/detail';
+import PendingPage from './pages/common/pending';
+import RejectPage from './pages/common/reject';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -49,6 +51,7 @@ function App() {
   }, []);
 
   const isAdmin = userData?.authority !== Authority.USER;
+  const userState = userData?.status;
 
   if (loading) {
     return <Splash />;
@@ -61,11 +64,22 @@ function App() {
           <>
             {isLoggedIn ? (
               <Routes>
-                <Route path='/profile' element={<Profile />} />
-                <Route path='/stamps' element={<Stamps />} />
-                <Route path='/notice' element={<Notice />} />
-                <Route path='/notice/:id' element={<NoticeDetail />} />
-                <Route path='/media' element={<Media />} />
+                {userState === UserStaus.APPROVED && (
+                  <>
+                    <Route path='/' element={<Profile />} />
+                    <Route path='/profile' element={<Profile />} />
+                    <Route path='/stamps' element={<Stamps />} />
+                    <Route path='/notice' element={<Notice />} />
+                    <Route path='/notice/:id' element={<NoticeDetail />} />
+                    <Route path='/media' element={<Media />} />
+                  </>
+                )}
+                {userState === UserStaus.PENDING && (
+                  <Route path='/' element={<PendingPage />} />
+                )}
+                {userState === UserStaus.REJECTED && (
+                  <Route path='/' element={<RejectPage />} />
+                )}
                 {isAdmin && (
                   <>
                     <Route path='/admin/main' element={<AdminMain />} />
@@ -95,7 +109,7 @@ function App() {
                     />
                   </>
                 )}
-                <Route path='/*' element={<Navigate to='profile' />} />
+                <Route path='/*' element={<Navigate to='/' />} />
               </Routes>
             ) : (
               <Routes>

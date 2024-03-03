@@ -54,12 +54,14 @@ const LoginButtonBox = styled.div`
 
 export const Login = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const navigate = useNavigate();
+  const domain = process.env.REACT_APP_PROJECT_DOMAIN!;
+  const currentPath = window.location.href;
 
   const handleGoogleLogin = async () => {
     setLoading(true);
     try {
-      if (isMobile) {
+      const usePopupLogin = isMobile || !currentPath.includes(domain);
+      if (usePopupLogin) {
         await googleSignUpWithPopup();
       } else {
         await googleSignUpWithRedirect();
@@ -68,11 +70,7 @@ export const Login = () => {
       // navigate('/profile');
     } catch (err: any) {
       setLoading(false);
-      if (err === '경희대학교 이메일이 아닙니다.') {
-        alert('경희대학교 이메일이 아닙니다.');
-      } else {
-        alert('회원가입 실패\n err :' + err);
-      }
+      alert('회원가입 실패\n err :' + err);
     }
   };
 
