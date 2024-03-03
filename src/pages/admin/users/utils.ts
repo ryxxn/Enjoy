@@ -1,5 +1,5 @@
 import { BadgeStatusType } from 'src/components/badge/types';
-import { Authority, UserStaus } from 'src/types/types';
+import { Authority, User, UserStaus } from 'src/types/types';
 
 export const getAuthority = (authority: Authority) => {
   const authCode = authority;
@@ -23,4 +23,14 @@ export const getUserBadgeStatus = (userStatus: UserStaus): BadgeStatusType => {
   if (status === UserStaus.PENDING) return BadgeStatusType.WARNING;
   if (status === UserStaus.REJECTED) return BadgeStatusType.ERROR;
   return BadgeStatusType.SUCCESS;
+};
+
+export const converterUsers = (users: User[]) => {
+  return users.map((user) => {
+    const id = user.objectID || user.id;
+    return {
+      ...user,
+      id,
+    };
+  });
 };
