@@ -7,7 +7,7 @@ import { SnackbarProvider } from 'notistack';
 import { Login } from './pages/user/Login';
 import { Profile } from './pages/user/Profile';
 import { Stamps } from './pages/user/Stamps';
-import { Notice } from './pages/user/Notice';
+import { Notice } from './pages/user/notices/Notice';
 import { Media } from './pages/user/Media';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
@@ -24,6 +24,7 @@ import AdminNoticeAdd from './pages/admin/notice/add/NoticeAdd';
 import AdminNoticeDetail from './pages/admin/notice/detail/NoticeDetail';
 import { Authority } from './types/types';
 import { Splash } from './pages/common/Splash';
+import NoticeDetail from './pages/user/notices/detail';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -63,7 +64,7 @@ function App() {
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/stamps' element={<Stamps />} />
                 <Route path='/notice' element={<Notice />} />
-                {/* <Route path='/notice/:id' element={<Notice />} /> */}
+                <Route path='/notice/:id' element={<NoticeDetail />} />
                 <Route path='/media' element={<Media />} />
                 {isAdmin && (
                   <>

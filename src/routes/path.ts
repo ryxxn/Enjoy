@@ -3,7 +3,6 @@ export const PATH = {
   PROFILE: '/profile',
   STAMPS: '/stamps',
   NOTICE: '/notice',
-  NOTICE_DETAIL: '/notice/:id',
   MEDIA: '/media',
   LOGIN: '/login',
 };
