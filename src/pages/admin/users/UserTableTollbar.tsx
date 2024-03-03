@@ -32,6 +32,12 @@ const UserTableTollbar = ({
   onSearchQueryChange,
   onSearch,
 }: Props) => {
+  const onKeyDown = (event: any) => {
+    if (event.key === 'Enter') {
+      onSearch();
+    }
+  };
+
   return (
     <div className='userTableTollbar'>
       <div className='inputGroup'>
@@ -62,6 +68,7 @@ const UserTableTollbar = ({
             onChange={(e: any) =>
               onSearchQueryChange('nameOrEmail', e.target.value)
             }
+            onKeyDown={onKeyDown}
             placeholder='이름 또는 이메일을 입력해주세요.'
           />
         </Fieldset>
