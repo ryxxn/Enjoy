@@ -1,0 +1,9 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.adminStampContainer {
+  .buttonsGroup {
+    @include flexLayout(row, flex-end, center, 8);
+    margin-top: px(16);
+  }
+}

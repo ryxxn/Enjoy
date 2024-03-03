@@ -1,0 +1,35 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.RHFInput,
+.RHFTextarea {
+  width: 100%;
+  div {
+    width: 100%;
+    padding-block: px(8);
+    box-sizing: border-box;
+    font-size: px(14);
+  }
+  input,
+  textarea {
+    width: 100%;
+    padding: px(8);
+    box-sizing: border-box;
+    border: px(1) solid $borderColor;
+    border-radius: px(8);
+    background-color: $white;
+  }
+}
+
+.RHFTextarea {
+  textarea {
+    min-height: px(200);
+    height: auto;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    overflow: hidden;
+    resize: none;
+  }
+}

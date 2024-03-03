@@ -1,0 +1,20 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.labelBox {
+  @include flexLayout(column, flex-start, flex-start, 8);
+  margin-inline: px(8);
+  box-sizing: border-box;
+  margin-block: px(16);
+
+  label {
+    font-size: px(13);
+    word-break: keep-all;
+  }
+
+  p {
+    margin: 0;
+    padding-block: px(8);
+    font-size: px(14);
+  }
+}

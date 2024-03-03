@@ -1,0 +1,42 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.alertContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: #000000cc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  color: var(--black);
+  transition: 1s;
+
+  .alertBox {
+    transform: scale(1);
+    background-color: $white;
+    @include flexLayout(column, center, center, 8);
+    padding: px(16);
+    box-sizing: border-box;
+    border-radius: px(12);
+    opacity: 0;
+    animation: fadeIn 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+  &.hide {
+    display: none;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

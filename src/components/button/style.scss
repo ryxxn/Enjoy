@@ -1,0 +1,20 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.button {
+  padding: px(8) px(16);
+  border: px(1) solid #e5e7eb;
+  border-radius: px(8);
+  background-color: $white;
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

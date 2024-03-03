@@ -1,0 +1,33 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.badge {
+  background-color: yellowgreen;
+  width: px(52);
+  padding: px(4);
+  box-sizing: border-box;
+  border-radius: px(4);
+  font-size: px(11);
+  text-align: center;
+
+  &[data-status='0'] {
+    background-color: #dce3e8;
+    color: #3f5463;
+  }
+  &[data-status='1'] {
+    background-color: #faf6cf;
+    color: #1c2b36;
+  }
+  &[data-status='2'] {
+    background-color: #fadcd9;
+    color: #ac3025;
+  }
+  &[data-status='3'] {
+    background-color: #c7ebd1;
+    color: #075e45;
+  }
+  &[data-status='4'] {
+    background-color: #d4e4fa;
+    color: #0d4ea6;
+  }
+}

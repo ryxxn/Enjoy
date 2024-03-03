@@ -1,0 +1,11 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.inputComponent {
+  width: 100%;
+  padding: px(8);
+  box-sizing: border-box;
+  border: px(1) solid $borderColor;
+  border-radius: px(8);
+  background-color: $white;
+}

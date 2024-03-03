@@ -1,0 +1,65 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.userNoticesContainer {
+  .userNoticeSearchBox {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    margin-top: 40px;
+    form {
+      width: 100%;
+      position: relative;
+      @include flexLayout(row, flex-start, center, 8);
+      input {
+        &:focus {
+          outline: none;
+        }
+      }
+      button[type='reset'] {
+        all: initial;
+        height: px(16);
+        position: absolute;
+        right: px(8);
+        color: #aaa;
+      }
+    }
+  }
+  .infiniteHitsContainer {
+    width: 100%;
+  }
+  .infiniteHitsList {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    @include flexLayout(column, flex-start, center, 10);
+    height: calc(100vh - px(100) - px(40) - px(18) * 3);
+    margin-top: px(18);
+    overflow-y: auto;
+
+    li {
+      width: 100%;
+    }
+    .noticeBox {
+      width: 100%;
+      height: px(80);
+      @include flexLayout(column, flex-start, flex-start, 8);
+      padding: px(12) px(16);
+      box-sizing: border-box;
+      border-radius: px(4);
+      border: var(--border);
+      cursor: pointer;
+      * {
+        cursor: pointer;
+      }
+
+      .kind {
+        font-size: 11px;
+        color: #838383;
+      }
+      .title {
+        font-size: 12px;
+      }
+    }
+  }
+}

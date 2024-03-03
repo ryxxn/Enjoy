@@ -1,0 +1,70 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.adminUsersContainer {
+  .userTableTollbar {
+    width: 100%;
+    @include flexLayout(row, space-between, center, 32);
+    .inputGroup {
+      width: 100%;
+      display: flex;
+      gap: px(16);
+    }
+    * {
+      font-size: px(12);
+    }
+  }
+}
+
+.adminUserDetailContainer {
+  header {
+    width: 100%;
+    margin-bottom: px(16);
+    margin-top: px(8);
+    @include flexLayout(row, flex-start, center, 16);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: px(8);
+    padding: px(16) px(8);
+    box-sizing: border-box;
+  }
+  .detailText {
+    width: 100%;
+    text-align: left;
+    border: px(1) solid $borderColor;
+    padding: px(8);
+    box-sizing: border-box;
+    border-radius: px(8);
+    margin: 0;
+    font-size: px(14);
+    font-weight: 400;
+    background-color: #f3f3f3;
+    // cursor: pointer;
+
+    &.stampBox {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: px(8);
+      .stampImage {
+        width: px(48);
+        height: px(48);
+        padding: px(16);
+        background-color: $white;
+        border-radius: px(8);
+        border: px(1) solid $borderColor;
+      }
+      .deleteButton {
+        align-self: flex-start;
+        margin-left: auto;
+        padding: px(4);
+        cursor: pointer;
+        &:hover {
+          color: #707070;
+        }
+      }
+    }
+  }
+}
