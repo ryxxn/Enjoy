@@ -5,15 +5,17 @@ interface Props
     React.HTMLAttributes<HTMLImageElement>,
     HTMLImageElement
   > {
-  src: string;
+  src: string | undefined | null;
   alt?: string;
   size: number;
 }
 
 const Avatar = ({ src, alt, size, ...other }: Props) => {
+  const imgSrc = src || `${process.env.PUBLIC_URL}/assets/blank-profile.png`;
+
   return (
     <img
-      src={src}
+      src={imgSrc}
       alt={alt}
       style={{ width: size, height: size, borderRadius: '50%' }}
       {...other}
