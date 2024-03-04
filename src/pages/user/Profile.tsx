@@ -3,11 +3,9 @@ import { Container, Content } from '../../components/Container';
 import { MenuBar } from '../../components/MenuBar';
 import { styled } from 'styled-components';
 import { Heading } from '../../components/Heading';
-import { AddButton, PlusIcon } from '../../components/AddButton';
+import { PlusIcon } from '../../components/AddButton';
 import { auth } from '../../firebase';
-import { QrGenerater } from '../../components/QRGenerater';
-import { addStamp } from '../../services/stamps.services';
-import { getLocalData, timestampToDate } from '../../utils/functions';
+import { timestampToDate } from '../../utils/functions';
 import { addProfileImageToUser } from '../../services/user.services';
 import { useUserStore } from '../../store/userStore';
 
@@ -71,16 +69,6 @@ export const Profile = () => {
 
   const { userData, fetchUserData, loading, setLoading } = useUserStore();
 
-  // 이 양식으로 큐알 올리면 됨.
-  // const handleUpload = () => {
-  //     addStamp(
-  //         "2023 콘텐츠제 ENCORE",
-  //         "2023 콘텐츠제 ENCORE",
-  //         new Date(2023, 11, 10),
-  //         imageFile
-  //     )
-  // }
-
   const handleProfileImageUpload = async () => {
     if (!imageFile) return;
     const url = await addProfileImageToUser(auth.currentUser?.uid, imageFile);
@@ -90,6 +78,7 @@ export const Profile = () => {
 
   useEffect(() => {
     handleProfileImageUpload();
+    //eslint-disable-next-line
   }, [imageFile]);
 
   useEffect(() => {
@@ -101,6 +90,7 @@ export const Profile = () => {
 
     // if (!getLocalData("profileImage")) return;
     // setImageUrl(getLocalData("profileImage"));
+    //eslint-disable-next-line
   }, [auth?.currentUser]);
 
   const originProfileImage =
@@ -111,7 +101,6 @@ export const Profile = () => {
     <Container>
       <Content style={{ justifyContent: 'flex-start', gap: '24px' }}>
         <Heading heading='my profile' subText='my information' />
-        {/* <QrGenerater /> */}
         <ProfileButton>
           <input
             type='file'
@@ -121,6 +110,7 @@ export const Profile = () => {
           {
             imageUrl || userData?.profileImage ? (
               <label htmlFor='addBtn'>
+                {loading && <div>로딩중</div>}
                 <ProfileImage
                   src={imageUrl || originProfileImage}
                   onLoad={() => {
@@ -141,8 +131,6 @@ export const Profile = () => {
             // />
           }
         </ProfileButton>
-        {/* <button onClick={() => handleUpload()}>업로드</button> */}
-        {/* <QrGenerater /> */}
         <InfoBox>
           <div className='info'>
             <p className='name'>NAME</p>
