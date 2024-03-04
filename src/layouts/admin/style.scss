@@ -7,8 +7,6 @@
     'an ah '
     'an am ';
   grid-auto-rows: 60px auto 1fr;
-  // grid-auto-columns: 100px auto 1fr;
-  // grid-gap: 10px;
   height: 100vh;
 
   .adminHeaderLayout {
@@ -19,7 +17,8 @@
     border-bottom: px(1) solid $borderColor;
     @include flexLayout(row, space-between, center, 0);
   }
-  .adminNavLayout {
+  .adminNavLayout,
+  .adminMobileNav {
     grid-area: an;
     padding: px(8);
     box-sizing: border-box;
@@ -66,6 +65,34 @@
     padding: 16px;
     box-sizing: border-box;
     background-color: #fafafa;
+  }
+
+  .adminMobileNavContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    &.open {
+      display: block;
+    }
+    .adminMobileNav {
+      animation: slideIn 0.3s;
+      width: px(200);
+      background-color: $white;
+      height: 100%;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
