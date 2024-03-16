@@ -21,9 +21,9 @@ https://enter-enjoy.web.app
 
 ### 사용자
 #### 1. 접속 및 상태별 화면
-<img src="https://github.com/ryxxn/Enjoy/assets/88328436/aa73fb58-5d77-440b-b711-6d9ed6378732" alt="user_profile" width="200"/>
-<img src="https://github.com/ryxxn/Enjoy/assets/88328436/837aa2f4-0976-4b1d-9762-5dee5645117e" alt="" width="200" />
-<img src="https://github.com/ryxxn/Enjoy/assets/88328436/61bffef3-3262-4fa4-8e19-fd93e581e238" alt="" width="200" />
+<img src="https://github.com/ryxxn/Enjoy/assets/88328436/aa73fb58-5d77-440b-b711-6d9ed6378732" alt="user_sreen_by_status1" width="200"/>
+<img src="https://github.com/ryxxn/Enjoy/assets/88328436/837aa2f4-0976-4b1d-9762-5dee5645117e" alt="user_sreen_by_status2" width="200" />
+<img src="https://github.com/ryxxn/Enjoy/assets/88328436/61bffef3-3262-4fa4-8e19-fd93e581e238" alt="user_sreen_by_status3" width="200" />
 
 
 #### 2. 프로필 이미지 수정
