@@ -45,7 +45,7 @@ https://enter-enjoy.web.app
 <img src="https://github.com/ryxxn/Enjoy/assets/88328436/6213cc06-f25f-4dfc-b5cc-820d95e6b1e1" alt="admin_stamp_qr" width="1000" />
 
 ## 4. 개발 기간
-   - 사용자 웹앱 - 2023.07.20 ~ 2023.07.23
+   - 사용자 웹앱 - 2023.07.20 ~ 2023.07.23
    - 관리자 페이지 - 2024.02.23 ~ 2024.03.01
    - ~ 리팩토링 및 유지 보수 중
      
