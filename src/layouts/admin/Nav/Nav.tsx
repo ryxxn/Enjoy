@@ -27,6 +27,12 @@ const Nav = () => {
     return formattedPathname.includes(formattedPath);
   };
 
+  const isDefaultUrl = () => {
+    const formattedPathname = pathname.replace(/\/$/, '');
+    const formattedPath = ADMIN_PATH.DEFAULT.replace(/\/$/, '');
+    return formattedPathname === formattedPath;
+  };
+
   return (
     <>
       <nav className='adminNavLayout'>
@@ -36,7 +42,11 @@ const Nav = () => {
         </Card>
         <Divider />
         <ul className='list'>
-          <li className={isActived(ADMIN_PATH.MAIN) ? 'actived' : ''}>
+          <li
+            className={
+              isActived(ADMIN_PATH.MAIN) || isDefaultUrl() ? 'actived' : ''
+            }
+          >
             <Link to={ADMIN_PATH.MAIN}>
               <MdOutlineDashboard size={18} />
               Dashboard
