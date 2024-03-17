@@ -10,7 +10,6 @@ import {
 } from 'src/components/table';
 import TableBody from 'src/components/table/TableBody';
 import TableNoData from 'src/components/table/TableNoData';
-import AdminLayout from 'src/layouts/admin/main/AdminLayout';
 import { UsersSearchQuery } from 'src/services/usersManage.services';
 import { User } from 'src/types/types';
 import { truncateString } from 'src/utils/string';
@@ -89,7 +88,7 @@ const AdminUsers = () => {
   const perPage = searchQuery.perPage;
 
   return (
-    <AdminLayout>
+    <>
       <div className='adminUsersContainer'>
         <Card>사용자 목록 (개인정보 처리 방침에 유의해주시기 바랍니다.)</Card>
         <Card>
@@ -154,7 +153,7 @@ const AdminUsers = () => {
           refetch={() => refreshUsers(searchQuery)}
         />
       )}
-    </AdminLayout>
+    </>
   );
 };
 
