@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { FormProvider, RHFInput } from 'src/components/RHFForms';
 import Card from 'src/components/card';
-import AdminLayout from 'src/layouts/admin/main/AdminLayout';
 import { addStamp } from 'src/services/stamps.services';
 import { Stamp } from 'src/types/types';
 import Button from 'src/components/button';
@@ -49,7 +48,7 @@ const AdminStampAdd = () => {
   }, [imageFile, previewUrl]);
 
   return (
-    <AdminLayout>
+    <>
       <Card>스탬프 추가</Card>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <div className='stampDetailContainer'>
@@ -93,7 +92,7 @@ const AdminStampAdd = () => {
           </Card>
         </div>
       </FormProvider>
-    </AdminLayout>
+    </>
   );
 };
 

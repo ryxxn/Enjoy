@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Content } from '../../components/Container';
-import { MenuBar } from '../../components/MenuBar';
+import { Container, Content } from '../../../components/Container';
+import { MenuBar } from '../../../components/MenuBar';
 import { styled } from 'styled-components';
-import { Heading } from '../../components/Heading';
-import { PlusIcon } from '../../components/AddButton';
-import { auth } from '../../firebase';
-import { timestampToDate } from '../../utils/functions';
-import { addProfileImageToUser } from '../../services/user.services';
-import { useUserStore } from '../../store/userStore';
+import { Heading } from '../../../components/Heading';
+import { PlusIcon } from '../../../components/AddButton';
+import { auth } from '../../../firebase';
+import { timestampToDate } from '../../../utils/functions';
+import { addProfileImageToUser } from '../../../services/user.services';
+import { useUserStore } from '../../../store/userStore';
 
 const InfoBox = styled.div`
   width: 100%;
@@ -62,7 +62,7 @@ const ProfileImage = styled.img`
   border-radius: 50%;
 `;
 
-export const Profile = () => {
+const Profile = () => {
   const [imageFile, setImageFile] = useState<File | Blob | any>();
 
   const [imageUrl, setImageUrl] = useState<string | undefined | null>(null);
@@ -160,3 +160,5 @@ export const Profile = () => {
     </Container>
   );
 };
+
+export default Profile;

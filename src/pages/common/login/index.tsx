@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import { Container } from '../../components/Container';
+import { Container } from '../../../components/Container';
 import { useNavigate } from 'react-router-dom';
 import {
   googleSignUpWithPopup,
   googleSignUpWithRedirect,
   handleGoogleRedirectResult,
-} from '../../services/login.services';
+} from '../../../services/login.services';
 import { isIOS, isMobile } from 'react-device-detect';
 
 const LoginButton = styled.button`
@@ -52,7 +52,7 @@ const LoginButtonBox = styled.div`
   }
 `;
 
-export const Login = () => {
+const Login = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const domain = process.env.REACT_APP_PROJECT_DOMAIN!;
   const currentPath = window.location.href;
@@ -107,3 +107,5 @@ export const Login = () => {
     </Container>
   );
 };
+
+export default Login;

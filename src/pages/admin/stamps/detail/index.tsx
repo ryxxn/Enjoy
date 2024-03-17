@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FormProvider, RHFInput } from 'src/components/RHFForms';
 import Card from 'src/components/card';
-import AdminLayout from 'src/layouts/admin/main/AdminLayout';
 import {
   deleteStamp,
   getStamp,
@@ -88,7 +87,7 @@ const AdminStampDetail = () => {
   }, [stampId]);
 
   return (
-    <AdminLayout>
+    <>
       <Card>스탬프 정보</Card>
       <ButtonsGroup>
         <Button onClick={() => setModalOpen(true)} fill>
@@ -186,7 +185,7 @@ const AdminStampDetail = () => {
       <Modal open={modalOpen} setOpen={setModalOpen}>
         <QrGenerater stampId={stampId} onClose={() => setModalOpen(false)} />
       </Modal>
-    </AdminLayout>
+    </>
   );
 };
 

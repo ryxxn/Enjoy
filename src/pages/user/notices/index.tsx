@@ -14,7 +14,7 @@ const searchClient = algoliasearch(
   process.env.REACT_APP_ALGOLIA_APP_ID!,
   process.env.REACT_APP_ALGOLIA_USER_SEARCH_KEY!
 );
-export const Notice = () => {
+const Notice = () => {
   const navigate = useNavigate();
 
   const handleNoticeClick = (id: string) => {
@@ -50,3 +50,5 @@ export const Notice = () => {
     </Container>
   );
 };
+
+export default Notice;
