@@ -66,8 +66,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     [isLoggedIn, loading, auth?.currentUser]
   );
 
-  console.log(auth?.currentUser);
-
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
