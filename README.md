@@ -1,5 +1,20 @@
 ## [Enjoy](https://enter-enjoy.web.app)
 
+<div align="center">
+   <img src="https://github.com/ryxxn/Enjoy/assets/88328436/04435318-c4e4-4e24-b31f-367427424dc0" alt="logo" />
+</div>
+<br />
+<div align="center">
+   <img src="https://img.shields.io/badge/Typescript-3178C6?style=flat&logo=typescript&logoColor=white"/>
+   <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=Firebase&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Zustand-3178C6?style=flat&logo=zustand&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Styled%20Components-DB7093?style=flat&logo=styled-components&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Sass-CC6699?style=flat&logo=sass&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Algolia-003DFF?style=flat&logo=algolia&logoColor=white"/>   
+</div>
+<br />
+
 ## 1. 서비스 개요
    
 https://enter-enjoy.web.app
