@@ -17,7 +17,7 @@
 
 ## 1. 서비스 개요
    
-https://enter-enjoy.web.app
+https://enjoy-enter.web.app
    
  대학교 학과 행사 참여 스탬프 및 공지 관리 서비스입니다.
 해당 학과 이메일로 로그인하면 별도 인증 절차 없이 서비스를 이용할 수 있습니다.
