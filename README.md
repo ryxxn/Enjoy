@@ -1,4 +1,4 @@
-## [Enjoy](https://enter-enjoy.web.app)
+## [Enjoy](https://enjoy-enter.web.app)
 
 <div align="center">
    <img src="https://github.com/ryxxn/Enjoy/assets/88328436/04435318-c4e4-4e24-b31f-367427424dc0" alt="logo" />
