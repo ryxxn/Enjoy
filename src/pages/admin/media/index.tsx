@@ -1,7 +1,26 @@
 import React from 'react';
+import './style.scss';
+import Card from 'src/components/card';
+import ButtonsGroup from 'src/components/buttons-group';
+import Button from 'src/components/button';
 
 const AdminMedia = () => {
-  return <div>관리자 페이지에 오신 것을 환영합니다.</div>;
+  return (
+    <div className="adminMediaContainer">
+      <Card>미디어 목록</Card>
+      <ButtonsGroup>
+        <Button fill>추가</Button>
+      </ButtonsGroup>
+      <Card>
+        <div className="gridContainer">
+          <Card className="item">Instagram</Card>
+          <Card className="item">Facebook</Card>
+          <Card className="item">Youtube</Card>
+          <Card className="item">Enjoy</Card>
+        </div>
+      </Card>
+    </div>
+  );
 };
 
 export default AdminMedia;

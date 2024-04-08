@@ -1,0 +1,25 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.adminMediaContainer {
+  .buttonsGroup {
+    @include flexLayout(row, flex-end, center, 8);
+    margin-top: px(16);
+  }
+
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(px(300), 1fr));
+    grid-gap: px(16);
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: px(16);
+      border-radius: px(8);
+      background-color: $white;
+      transition: all 0.3s ease;
+    }
+  }
+}
