@@ -1,0 +1,47 @@
+@import 'src/styles/utils.scss';
+@import 'src/styles/colors.scss';
+
+.userLayout {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: px(480);
+  min-height: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+
+  @media (width >= 480px) {
+    border-inline: px(2) solid #eaeaea;
+    box-sizing: content-box;
+  }
+}
+
+.userNavLayout {
+  width: 100%;
+  max-width: px(480);
+  height: px(100);
+  position: fixed;
+  bottom: 0;
+  border-radius: px(12) px(12) 0 0;
+  background-color: $white;
+  z-index: 10;
+  padding: 0 px(32);
+  box-sizing: border-box;
+  box-shadow: 0 0 px(4) 0 rgba(0, 0, 0, 0.25);
+  @include flexLayout(row, space-between, center, 0);
+
+  a {
+    text-decoration: none;
+    font-size: px(10);
+    font-weight: 700;
+    @include flexLayout(column, center, center, 0);
+    gap: px(10);
+    color: var(--main-disabled);
+
+    &.actived {
+      color: var(--main-color);
+    }
+  }
+}
