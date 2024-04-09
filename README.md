@@ -34,7 +34,7 @@ https://enjoy-enter.web.app/
        
   - firebase & algolia를 이용한 실시간 검색 기능 연동
   - React.lazy, suspense를 이용한 초기 로딩 속도 개선
-  - DB와 검색 DB간 동기화 딜레이 사이 팻칭 이슈로 싱크가 맞지 않는 문제로 업데이트 데이터는 캐싱으로 관리
+  - 캐싱 데이터로 DB와 검색 DB간 동기화 딜레이 이슈 관리
 
 ## 3. 화면
 
