@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'BMDOHYEON';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -23,4 +24,17 @@ body {
   margin: 0;
   width: 100%;
   min-height: 100vh;
+  /* sage area */
+  /* padding-top: constant(safe-area-inset-top); 구형 iOS 지원 */
+  /* padding-top: env(safe-area-inset-top); 최신 iOS 지원 */
+  /* padding-left: env(safe-area-inset-left); */
+  /* padding-right: env(safe-area-inset-right); */
+  /* padding-bottom: env(safe-area-inset-bottom); */
+  /* background-color: #fff; */
+}
+
+html {
+  min-height: calc(100% + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
