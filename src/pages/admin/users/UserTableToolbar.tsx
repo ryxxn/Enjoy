@@ -27,7 +27,7 @@ const StatusOption = [
 ];
 // ----------------------------------------------------------------------
 
-const UserTableTollbar = ({
+const UserTableToolbar = ({
   searchQuery,
   onSearchQueryChange,
   onSearch,
@@ -39,9 +39,9 @@ const UserTableTollbar = ({
   };
 
   return (
-    <div className='userTableTollbar'>
-      <div className='inputGroup'>
-        <Fieldset label='권한'>
+    <div className="userTableTollbar">
+      <div className="inputGroup">
+        <Fieldset label="권한">
           <Select
             name={'권한'}
             selected={searchQuery.filter.authority}
@@ -49,7 +49,7 @@ const UserTableTollbar = ({
             data={AuthOption}
           />
         </Fieldset>
-        <Fieldset label='상태'>
+        <Fieldset label="상태">
           <Select
             name={'상태'}
             selected={searchQuery.filter.status}
@@ -58,7 +58,7 @@ const UserTableTollbar = ({
           />
         </Fieldset>
         <Fieldset
-          label='이름 및 이메일'
+          label="이름 및 이메일"
           style={{
             flex: 1,
           }}
@@ -69,7 +69,7 @@ const UserTableTollbar = ({
               onSearchQueryChange('nameOrEmail', e.target.value)
             }
             onKeyDown={onKeyDown}
-            placeholder='이름 또는 이메일을 입력해주세요.'
+            placeholder="이름 또는 이메일을 입력해주세요."
           />
         </Fieldset>
       </div>
@@ -80,4 +80,4 @@ const UserTableTollbar = ({
   );
 };
 
-export default UserTableTollbar;
+export default UserTableToolbar;
