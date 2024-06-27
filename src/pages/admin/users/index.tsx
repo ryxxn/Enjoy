@@ -18,7 +18,7 @@ import UserDetailModal from './UserDetailModal';
 import TablePagination from 'src/components/table/TablePagination';
 import useUsers from './useUsers';
 import useStamps from '../stamps/useStamps';
-import UserTableTollbar from './UserTableTollbar';
+import UserTableToolbar from './UserTableToolbar';
 import Badge from 'src/components/badge';
 import TableSkeleton from 'src/components/table/TableSkeleton';
 
@@ -89,10 +89,10 @@ const AdminUsers = () => {
 
   return (
     <>
-      <div className='adminUsersContainer'>
+      <div className="adminUsersContainer">
         <Card>사용자 목록 (개인정보 처리 방침에 유의해주시기 바랍니다.)</Card>
         <Card>
-          <UserTableTollbar
+          <UserTableToolbar
             searchQuery={searchQuery}
             onSearchQueryChange={onSearchQueryChange}
             onSearch={() => handleSearch(0)}
@@ -106,21 +106,21 @@ const AdminUsers = () => {
               {!loading &&
                 users.map((user: User, i: number) => (
                   <TableRow key={user.id} onClick={() => setSelectedUser(user)}>
-                    <TableCol width='5%'>{page * perPage + i + 1}</TableCol>
-                    <TableCol width='20%'>
+                    <TableCol width="5%">{page * perPage + i + 1}</TableCol>
+                    <TableCol width="20%">
                       {truncateString(user.userName, 10)}
                     </TableCol>
-                    <TableCol width='20%'>
+                    <TableCol width="20%">
                       {truncateString(user.userEmail, 20)}
                     </TableCol>
-                    <TableCol width='15%'>{user.stamps?.length} 개</TableCol>
-                    <TableCol width='15%'>
+                    <TableCol width="15%">{user.stamps?.length} 개</TableCol>
+                    <TableCol width="15%">
                       {getAuthority(user.authority)}
                     </TableCol>
-                    <TableCol width='15%'>
+                    <TableCol width="15%">
                       {format(user.createdAt, 'yyyy.MM.dd')}
                     </TableCol>
-                    <TableCol width='10%'>
+                    <TableCol width="10%">
                       <Badge
                         label={getUserStatus(user.status)}
                         status={getUserBadgeStatus(user.status)}

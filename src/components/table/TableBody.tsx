@@ -1,15 +1,15 @@
 import React from 'react';
 
-interface Props
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLTableElement>,
-    HTMLTableElement
-  > {
+interface Props extends React.HTMLAttributes<HTMLTableSectionElement> {
   children: React.ReactNode;
 }
 
-const TableBody = ({ children }: Props) => {
-  return <tbody className='tableBody'>{children}</tbody>;
+const TableBody = ({ children, ...other }: Props) => {
+  return (
+    <tbody className="tableBody" {...other}>
+      {children}
+    </tbody>
+  );
 };
 
 export default TableBody;
