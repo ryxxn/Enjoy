@@ -15,8 +15,8 @@ import { updateUser } from 'src/services/usersManage.services';
 import { isEqual } from 'lodash';
 import { useSnackbar } from 'notistack';
 import Badge from 'src/components/badge';
-import { getUserBadgeStatus, getUserStatus } from './utils';
-import { useCachingUserStore } from './useCachingUserStore';
+import { getUserBadgeStatus, getUserStatus } from '../utils';
+import { useCachingUserStore } from '../useCachingUserStore';
 
 interface Props {
   open: boolean;
@@ -101,7 +101,7 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
   return (
     <>
       <Modal open={open} setOpen={() => onClose()}>
-        <div className='adminUserDetailContainer'>
+        <div className="adminUserDetailContainer">
           <header>
             {user.userName}
             <Badge
@@ -110,11 +110,11 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
             />
           </header>
           <Divider />
-          <div className='grid'>
-            <LabelBox name='Email'>
-              <p className='detailText'>{user.userEmail}</p>
+          <div className="grid">
+            <LabelBox name="Email">
+              <p className="detailText">{user.userEmail}</p>
             </LabelBox>
-            <LabelBox name='권한'>
+            <LabelBox name="권한">
               <Select
                 name={'권한'}
                 selected={authority}
@@ -125,7 +125,7 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
                 ]}
               />
             </LabelBox>
-            <LabelBox name='상태'>
+            <LabelBox name="상태">
               <Select
                 name={'상태'}
                 selected={status}
@@ -137,15 +137,15 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
                 ]}
               />
             </LabelBox>
-            <LabelBox name='생성일'>
-              <p className='detailText'>
+            <LabelBox name="생성일">
+              <p className="detailText">
                 {format(new Date(user.createdAt), 'yyyy-MM-dd a hh:mm', {
                   locale: ko,
                 })}
               </p>
             </LabelBox>
           </div>
-          <LabelBox name='스탬프'>
+          <LabelBox name="스탬프">
             {userStamps?.map((stamp) => (
               <StampBox stamp={stamp} handleDelete={handleDeleteStamp} />
             ))}
@@ -172,7 +172,7 @@ const UserDetailModal = ({ open, onClose, user, stamps, refetch }: Props) => {
         </div>
       </Modal>
       <Modal open={stampAddModalOpen} setOpen={setStampAddModalOpen}>
-        <div className='adminUserDetailContainer'>
+        <div className="adminUserDetailContainer">
           <div>추가할 스탬프를 선택하세요.</div>
           <Divider style={{ marginBlock: px(16) }} />
           {otherStamps.map((stamp) => (
@@ -197,26 +197,26 @@ const StampBox = ({
 }) => {
   return (
     <div
-      className='detailText stampBox'
+      className="detailText stampBox"
       onClick={() => {
         if (handleSelect) {
           handleSelect(stamp.id);
         }
       }}
     >
-      <img className='stampImage' src={stamp.imgSrc || ''} alt='stamp' />
+      <img className="stampImage" src={stamp.imgSrc || ''} alt="stamp" />
       <div>
-        <LabelBox name='이름' direction='row'>
+        <LabelBox name="이름" direction="row">
           {stamp.name}
         </LabelBox>
-        <LabelBox name='종류' direction='row'>
+        <LabelBox name="종류" direction="row">
           {stamp.kind}
         </LabelBox>
       </div>
       {handleDelete && (
         <MdDeleteOutline
           onClick={() => handleDelete(stamp.id)}
-          className='deleteButton'
+          className="deleteButton"
           size={20}
         />
       )}

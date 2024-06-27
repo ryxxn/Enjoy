@@ -1,26 +1,16 @@
-import { format } from 'date-fns';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './style.scss';
 import Card from 'src/components/card';
-import {
-  TableCol,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from 'src/components/table';
+import { TableContainer, TableHead } from 'src/components/table';
 import TableBody from 'src/components/table/TableBody';
 import TableNoData from 'src/components/table/TableNoData';
 import { UsersSearchQuery } from 'src/services/usersManage.services';
 import { User } from 'src/types/types';
-import { truncateString } from 'src/utils/string';
-import { getAuthority, getUserBadgeStatus, getUserStatus } from './utils';
-import UserDetailModal from './UserDetailModal';
 import TablePagination from 'src/components/table/TablePagination';
 import useUsers from './useUsers';
 import useStamps from '../stamps/useStamps';
-import UserTableToolbar from './UserTableToolbar';
-import Badge from 'src/components/badge';
 import TableSkeleton from 'src/components/table/TableSkeleton';
+import { UserDetailModal, UserTableRow, UserTableToolbar } from './sections';
 
 // ----------------------------------------------------------------------
 const THEAD_WIDTHS = ['5%', '20%', '20%', '15%', '15%', '15%', '10%'];
@@ -105,28 +95,12 @@ const AdminUsers = () => {
               <TableSkeleton loading={loading} />
               {!loading &&
                 users.map((user: User, i: number) => (
-                  <TableRow key={user.id} onClick={() => setSelectedUser(user)}>
-                    <TableCol width="5%">{page * perPage + i + 1}</TableCol>
-                    <TableCol width="20%">
-                      {truncateString(user.userName, 10)}
-                    </TableCol>
-                    <TableCol width="20%">
-                      {truncateString(user.userEmail, 20)}
-                    </TableCol>
-                    <TableCol width="15%">{user.stamps?.length} 개</TableCol>
-                    <TableCol width="15%">
-                      {getAuthority(user.authority)}
-                    </TableCol>
-                    <TableCol width="15%">
-                      {format(user.createdAt, 'yyyy.MM.dd')}
-                    </TableCol>
-                    <TableCol width="10%">
-                      <Badge
-                        label={getUserStatus(user.status)}
-                        status={getUserBadgeStatus(user.status)}
-                      />
-                    </TableCol>
-                  </TableRow>
+                  <UserTableRow
+                    key={user.id}
+                    row={user}
+                    order={page * perPage + i + 1}
+                    onClick={() => setSelectedUser(user)}
+                  />
                 ))}
               <TableNoData isNotFound={!users.length && !loading}>
                 사용자가 없습니다.
