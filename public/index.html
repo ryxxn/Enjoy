@@ -1,43 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta name="keywords" content="enjoy, enter, 국민대, 경희대" />
+    <meta name="author" content="Dochi" />
+    <meta
+      name="description"
+      content="대학교 학과 행사 참여 관리를 위한 웹앱입니다."
+    />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Enjoy" />
+    <meta
+      property="og:description"
+      content="대학교 학과 행사 참여 관리를 위한 웹앱입니다."
+    />
+    <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+    <meta property="og:url" content="%PUBLIC_URL%/logo192.png" />
+    <!-- Twitter Card -->
+    <meta name="twitter:title" content="Enjoy" />
+    <meta
+      name="twitter:description"
+      content="대학교 학과 행사 참여 관리를 위한 웹앱입니다."
+    />
+    <meta name="twitter:site" content="@drxxn00" />
+    <meta name="twitter:card" content="%PUBLIC_URL%/logo192.png" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/logo192.png" />
+    <!-- Other -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>ENJOY</title>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-82PD15JQPM"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="keywords" content="enjoy, enter, 국민대, 경희대">
-  <meta name="author" content="Dochi">
-  <meta name="description" content="대학교 학과 행사 참여 관리를 위한 웹앱입니다." />
-  <!-- Open Graph -->
-  <meta property="og:title" content="Enjoy">
-  <meta property="og:description" content="대학교 학과 행사 참여 관리를 위한 웹앱입니다.">
-  <meta property="og:image" content="%PUBLIC_URL%/logo192.png">
-  <meta property="og:url" content="%PUBLIC_URL%/logo192.png">
-  <!-- Twitter Card -->
-  <meta name="twitter:title" content="Enjoy">
-  <meta name="twitter:description" content="대학교 학과 행사 참여 관리를 위한 웹앱입니다.">
-  <meta name="twitter:site" content="@drxxn00">
-  <meta name="twitter:card" content="%PUBLIC_URL%/logo192.png">
-  <meta name="twitter:image" content="%PUBLIC_URL%/logo192.png">
-  <!-- Other -->
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>ENJOY</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82PD15JQPM"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+      gtag('config', 'G-82PD15JQPM');
+    </script>
+  </head>
 
-    gtag('config', 'G-82PD15JQPM');
-  </script>
-</head>
-
-<body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
-</body>
-
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script
+      async
+      id="weppstore-install-script"
+      src="https://cdn.jsdelivr.net/gh/ryxxn/pwa-install-prompt@main/index.js"
+    ></script>
+  </body>
 </html>

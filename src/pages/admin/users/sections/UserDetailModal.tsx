@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.scss';
+import '../style.scss';
 import Button from 'src/components/button';
 import ButtonsGroup from 'src/components/buttons-group';
 import LabelBox from 'src/components/labelBox';
