@@ -34,6 +34,7 @@ https://enjoy-enter.web.app/
        
   - firebase & algolia를 이용한 실시간 검색 기능 연동
   - code spliting으로 초기 로딩 속도 개선
+  - optimistic update로 검색 DB와 싱크가 맞지 않는 문제 해결
 
 ## 3. 화면
 
