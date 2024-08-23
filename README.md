@@ -33,8 +33,7 @@ https://enjoy-enter.web.app/
      - 공지사항 등록, 수정, 삭제
        
   - firebase & algolia를 이용한 실시간 검색 기능 연동
-  - React.lazy, suspense를 이용한 초기 로딩 속도 개선
-  - 캐싱 데이터로 DB와 검색 DB간 동기화 딜레이 이슈 관리
+  - code spliting으로 초기 로딩 속도 개선
 
 ## 3. 화면
 
